@@ -14,7 +14,7 @@
 {% endblock header %}
 
 {% block nav %}
-    {% if nav_items %}
+    {% if nav_items or MENUITEMS %}
         <nav><ul>
         {% for section in nav_items %}
             {% if section.metadata.nav %}
