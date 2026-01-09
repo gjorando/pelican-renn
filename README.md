@@ -2,6 +2,14 @@
 
 A simple Pelican theme tailored for my personal needs.
 
+In order to use it, some Jinja extensions must be enabled in your `pelicanconf.py`:
+
+```python
+JINJA_ENVIRONMENT = {
+    "extensions": ["jinja2.ext.do"]
+}
+```
+
 ## Customization
 
 The CSS can be customized by setting the `STYLESHEET_URL` config variable to your custom CSS file. For instance, the colors can be adjusted with the following directives:
