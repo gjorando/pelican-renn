@@ -25,3 +25,7 @@ The CSS can be customized by setting the `STYLESHEET_URL` config variable to you
 }
 ```
 
+Available configuration variables are listed below.
+
+- `STYLESHEET_URL` - Custom CSS, loaded after the base stylesheets (Default: unset).
+- `DISPLAY_SOCIALS_IN_FOOTER` - Whether to display the social icons (set with `SOCIAL`) in the footer (Default: `False`).

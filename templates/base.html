@@ -25,7 +25,9 @@
         {% block footer %}
             <p>Le <a href="https://github.com/gjorando/pelican-renn/">thème</a> de ce site est transféré dans le domaine public selon les termes de la <a href="https://unlicense.org">licence <em>Unlicense</em></em></a>.</p>
             <p>La police de caractères <a href="http://mplus-fonts.osdn.jp/">M<span style="vertical-align: super; font-size: 0.8em; line-height: 0;">+</span> P Type-1</a> est mise à disposition selon les dispositions de la licence <a href="{{ SITEURL }}/theme/fonts/MPLUS1p/OFL.txt">OFL</a>.</p>
-            {% include "snippets/social.html" %}
+            {% if DISPLAY_SOCIALS_IN_FOOTER %}
+                {% include "snippets/social_footer.html" %}
+            {% endif %}
         {% endblock footer %}
     </footer>
 {% endblock body %}
