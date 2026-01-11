@@ -2,10 +2,19 @@
 
 {% block head %}
     {# We extend from simple by adding our base css stylesheets #}
-    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="{{ THEME_STATIC_DIR }}/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="{{ THEME_STATIC_DIR }}/css/style.css" />
     {{ super() }}
 {% endblock %}
+
+{# Add language buttons to MENUITEMS #}
+{% if not MENUITEMS %}
+    {% set MENUITEMS = [] %}
+{% endif %}
+{% for lang, url in extra_siteurls|items %}
+    {% do MENUITEMS.append(("<span class='nav-lang-link'>{}</span>".format(lang), "{}/".format(url))) %}
+{% endfor %}
+
 
 {# We redefine the whole body to put the navbar on top. #}
 {% block body %}
@@ -23,8 +32,12 @@
     </main>
     <footer>
         {% block footer %}
-            <p>Le <a href="https://github.com/gjorando/pelican-renn/">thème</a> de ce site est transféré dans le domaine public selon les termes de la <a href="https://unlicense.org">licence <em>Unlicense</em></em></a>.</p>
-            <p>La police de caractères <a href="http://mplus-fonts.osdn.jp/">M<span style="vertical-align: super; font-size: 0.8em; line-height: 0;">+</span> P Type-1</a> est mise à disposition selon les dispositions de la licence <a href="{{ SITEURL }}/theme/fonts/MPLUS1p/OFL.txt">OFL</a>.</p>
+            <p>{% trans trimmed %}
+                Le <a href="https://github.com/gjorando/pelican-renn/">thème</a> de ce site est transféré dans le domaine public selon les termes de la <a href="https://unlicense.org">licence <em>Unlicense</em></a>.
+            {% endtrans %}</p>
+            <p>{% trans trimmed %}
+                La police de caractères <a href="http://mplus-fonts.osdn.jp/">M<span style="vertical-align: super; font-size: 0.8em; line-height: 0;">+</span> P Type-1</a> est mise à disposition selon les dispositions de la <a href="{{ SITEURL }}/theme/fonts/MPLUS1p/OFL.txt">licence OFL</a>.
+            {% endtrans %}</p>
             {% if DISPLAY_SOCIALS_IN_FOOTER %}
                 {% include "snippets/social_footer.html" %}
             {% endif %}

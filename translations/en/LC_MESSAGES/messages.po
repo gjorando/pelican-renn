@@ -1,0 +1,29 @@
+# English translations for pelican-renn.
+# Copyright (C) 2026 Public domain
+# This file is distributed under the same license as the pelican-renn project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pelican-renn 1.0.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-01-11 15:08+0100\n"
+"PO-Revision-Date: 2026-01-10 13:28+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: templates/base.html:33
+msgid "Le <a href=\"https://github.com/gjorando/pelican-renn/\">thème</a> de ce site est transféré dans le domaine public selon les termes de la <a href=\"https://unlicense.org\">licence <em>Unlicense</em></a>."
+msgstr "The <a href=\"https://github.com/gjorando/pelican-renn/\">theme</a> of this website is transferred in the public domain according to the terms of the <a href=\"https://unlicense.org\"><em>Unlicense</em> license</a>."
+
+#: templates/base.html:36
+#, python-format
+msgid "La police de caractères <a href=\"http://mplus-fonts.osdn.jp/\">M<span style=\"vertical-align: super; font-size: 0.8em; line-height: 0;\">+</span> P Type-1</a> est mise à disposition selon les dispositions de la <a href=\"%(SITEURL)s/theme/fonts/MPLUS1p/OFL.txt\">licence OFL</a>."
+msgstr "The <a href=\"http://mplus-fonts.osdn.jp/\">M<span style=\"vertical-align: super; font-size: 0.8em; line-height: 0;\">+</span> P Type-1</a> font is distributed according to the terms of the <a href=\"%(SITEURL)s/theme/fonts/MPLUS1p/OFL.txt\">OFL license</a>."
+

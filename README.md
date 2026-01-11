@@ -6,9 +6,14 @@ In order to use it, some Jinja extensions must be enabled in your `pelicanconf.p
 
 ```python
 JINJA_ENVIRONMENT = {
-    "extensions": ["jinja2.ext.do"]
+    "extensions": ["jinja2.ext.do", "jinja2.ext.i18n"]
 }
+
+# The theme templates are written in French
+I18N_TEMPLATES_LANG = "fr"
 ```
+
+Moreover, `pelican-i18n-subsites` plugin is required.
 
 ## Customization
 
