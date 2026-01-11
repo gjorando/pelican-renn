@@ -2,22 +2,41 @@
 
 A simple Pelican theme tailored for my personal needs.
 
-In order to use it, some Jinja extensions must be enabled in your `pelicanconf.py`:
+The easiest way to get started is to copy the content of [the example Pelican configuration file](pelicanconf_template.py).
 
-```python
-JINJA_ENVIRONMENT = {
-    "extensions": ["jinja2.ext.do", "jinja2.ext.i18n"]
-}
+To generate the lander page, you must add a page with the following content:
 
-# The theme templates are written in French
-I18N_TEMPLATES_LANG = "fr"
+```rest
+<Lander page title>
+###################
+
+:status: hidden
+:slug: lander-page
+:lang: en
+:save_as: index.html
+:template: lander
 ```
+
+This special page is populated with sections; each of these sections is actually a page with a special slug. It is strongly advised to hide these special pages.
+
+```rest
+<Section name>
+##############
+
+:status: hidden
+:nav: <section nav name>
+:slug: landing-section-hidden-<section-name>
+
+<Section content
+```
+
+If the `nav` metadata is set, an anchor to the section is added to the lander page navbar.
 
 Moreover, `pelican-i18n-subsites` plugin is required.
 
 ## Customization
 
-The CSS can be customized by setting the `STYLESHEET_URL` config variable to your custom CSS file. For instance, the colors can be adjusted with the following directives:
+The CSS can be customized by setting the `STYLESHEET_URL` config variable to your custom CSS file. For instance, the  colors can be adjusted with the following directives:
 
 ```css
 /* Colors are to be modified according to your needs */
@@ -30,7 +49,9 @@ The CSS can be customized by setting the `STYLESHEET_URL` config variable to you
 }
 ```
 
-Available configuration variables are listed below.
+Additional configuration variables are listed below.
 
-- `STYLESHEET_URL` - Custom CSS, loaded after the base stylesheets (Default: unset).
 - `DISPLAY_SOCIALS_IN_FOOTER` - Whether to display the social icons (set with `SOCIAL`) in the footer (Default: `False`).
+- `LANDER_DISPLAY_SOCIALS_IN_FOOTER` - Whether to display the social icons (set with `SOCIAL`) in the lander footer (Default: `False`).
+- `LANDER_MENUITEMS` - `MENUITEMS`, but for the lander page (Default: unset).
+- `NAV_ICON` - Icon for the navbar (Default: unset).

@@ -47,17 +47,17 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     font-size: 2em;
-    margin-bottom: 1em;
+    margin: 1em 0;
 }
 
 h2 {
     font-size: 1.7em;
-    margin-bottom: 0.7em;
+    margin: 0.7em 0;
 }
 
 h3 {
     font-size: 1.4em;
-    margin-bottom: 0.4em;
+    margin: 0.4em 0;
 }
 
 header, main {
@@ -81,7 +81,8 @@ header {
 }
 
 .profile-picture {
-    border-radius: 1em;
+    border-radius: 10%;
+    alignment-baseline: alphabetic;
     width: 8em;
     display: block;
     margin: 0 auto 2em;
@@ -130,6 +131,25 @@ nav {
     {
         font-weight: normal;
         font-style: italic;
+    }
+
+    .nav-index {
+        img {
+            height: 2.5em;
+            vertical-align: middle;
+            border-radius: 25%;
+            transition: 1s;
+        }
+    }
+
+    .nav-index:hover {
+        a {
+            background: transparent;
+        }
+
+        img {
+            box-shadow: 0 0 0 2px var(--link-color);
+        }
     }
 }
 
@@ -363,6 +383,10 @@ body > footer {
         .landing-anchor-link
         {
             display: list-item;
+        }
+
+        .nav-index img {
+            border-radius: 100%;
         }
     }
 

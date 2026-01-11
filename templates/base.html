@@ -1,9 +1,15 @@
 {% extends "!simple/base.html" %}
 
+{% if 'jinja2.ext.i18n' not in JINJA_ENVIRONMENT.extensions %}
+    {%- macro _(msg) -%}
+        {{ msg % kwargs }}
+    {%- endmacro -%}
+{% endif %}
+
 {% block head %}
     {# We extend from simple by adding our base css stylesheets #}
-    <link rel="stylesheet" type="text/css" href="{{ THEME_STATIC_DIR }}/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="{{ THEME_STATIC_DIR }}/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css" />
     {{ super() }}
 {% endblock %}
 
@@ -18,12 +24,34 @@
 
 {# We redefine the whole body to put the navbar on top. #}
 {% block body %}
-    {% block nav %}
-        {{ super() }}
-    {% endblock nav %}
+    <nav>
+        {% block nav %}
+            <ul>
+                <li class="nav-index"><a href="{{ SITEURL }}"><img src="{{ NAV_ICON }}" alt="{{ SITENAME }}"></a></li>
+                {% for title, link in MENUITEMS %}
+                    <li><a href="{{ link }}">{{ title }}</a></li>
+                {% endfor %}
+                {% if DISPLAY_PAGES_ON_MENU %}
+                    {% for p in pages %}
+                        <li><a href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
+                    {% endfor %}
+                {% endif %}
+                {% if DISPLAY_CATEGORIES_ON_MENU %}
+                    {% for cat, null in categories %}
+                        <li><a href="{{ SITEURL }}/{{ cat.url }}" {% if cat==category %} aria-current="page" {% endif %}>{{ cat}}</a></li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        {% endblock nav %}
+    </nav>
     <header>
         {% block header %}
-            {{ super() }}
+            <hgroup>
+                <h1>{{ SITENAME }}</h1>
+                {% if SITESUBTITLE %}
+                    <p>{{ SITESUBTITLE }}</p>
+                {% endif %}
+            </hgroup>
         {% endblock header %}
     </header>
     <main>
@@ -38,6 +66,10 @@
             <p>{% trans trimmed %}
                 La police de caractères <a href="http://mplus-fonts.osdn.jp/">M<span style="vertical-align: super; font-size: 0.8em; line-height: 0;">+</span> P Type-1</a> est mise à disposition selon les dispositions de la <a href="{{ SITEURL }}/theme/fonts/MPLUS1p/OFL.txt">licence OFL</a>.
             {% endtrans %}</p>
+            {# If we are on the lander page, DISPLAY_SOCIALS_IN_FOOTER is set to LANDER_DISPLAY_SOCIALS_IN_FOOTER #}
+            {% if output_file == "index.html" %}
+                {% set DISPLAY_SOCIALS_IN_FOOTER = LANDER_DISPLAY_SOCIALS_IN_FOOTER %}
+            {% endif %}
             {% if DISPLAY_SOCIALS_IN_FOOTER %}
                 {% include "snippets/social_footer.html" %}
             {% endif %}

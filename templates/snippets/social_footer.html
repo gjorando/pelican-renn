@@ -3,7 +3,7 @@
 {% if SOCIAL %}
     <ul class="social-icons">
         {% for social, link in SOCIAL %}
-            <li><a href="{{ link }}" title="{{ social }}" style="mask: url('{{  THEME_STATIC_DIR }}/images/{{ social|lower }}-icon.svg') no-repeat center/contain"></a></li>
+            <li><a href="{{ link }}" title="{{ social }}" style="mask: url('{{SITEURL}}/{{ THEME_STATIC_DIR }}/images/{{ social|lower }}-icon.svg') no-repeat center/contain"></a></li>
         {% endfor %}
     </ul>
 {% endif %}
