@@ -13,14 +13,22 @@
     {{ super() }}
 {% endblock %}
 
+{# Define lang button elements #}
+{% set NAV_LANG_LINKS = [] %}
+{% for lang, url in extra_siteurls|items %}
+    {% do NAV_LANG_LINKS.append(("<span class='nav-lang-link'>{}</span>".format(lang), "{}/".format(url))) %}
+{% endfor %}
+
 {# Add language buttons to MENUITEMS #}
 {% if not MENUITEMS %}
     {% set MENUITEMS = [] %}
 {% endif %}
-{% for lang, url in extra_siteurls|items %}
-    {% do MENUITEMS.append(("<span class='nav-lang-link'>{}</span>".format(lang), "{}/".format(url))) %}
-{% endfor %}
-
+{% set MENUITEMS = MENUITEMS + NAV_LANG_LINKS %}
+{# Add language buttons to LANDER_MENUITEMS #}
+{% if not LANDER_MENUITEMS %}
+    {% set LANDER_MENUITEMS = [] %}
+{% endif %}
+{% set LANDER_MENUITEMS = LANDER_MENUITEMS + NAV_LANG_LINKS %}
 
 {# We redefine the whole body to put the navbar on top. #}
 {% block body %}
