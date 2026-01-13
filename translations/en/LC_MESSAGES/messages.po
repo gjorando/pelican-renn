@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pelican-renn 1.0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-01-11 20:27+0100\n"
+"POT-Creation-Date: 2026-01-13 17:55+0100\n"
 "PO-Revision-Date: 2026-01-10 13:28+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,16 +18,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: templates/base.html:63
+#: templates/base.html:71
 msgid "Le <a href=\"https://github.com/gjorando/pelican-renn/\">thème</a> de ce site est transféré dans le domaine public selon les termes de la <a href=\"https://unlicense.org\">licence <em>Unlicense</em></a>."
 msgstr "The <a href=\"https://github.com/gjorando/pelican-renn/\">theme</a> of this website is transferred in the public domain according to the terms of the <a href=\"https://unlicense.org\"><em>Unlicense</em> license</a>."
 
-#: templates/base.html:66
+#: templates/base.html:74
 #, python-format
 msgid "La police de caractères <a href=\"http://mplus-fonts.osdn.jp/\">M<span style=\"vertical-align: super; font-size: 0.8em; line-height: 0;\">+</span> P Type-1</a> est mise à disposition selon les dispositions de la <a href=\"%(SITEURL)s/theme/fonts/MPLUS1p/OFL.txt\">licence OFL</a>."
 msgstr "The <a href=\"http://mplus-fonts.osdn.jp/\">M<span style=\"vertical-align: super; font-size: 0.8em; line-height: 0;\">+</span> P Type-1</a> font is distributed according to the terms of the <a href=\"%(SITEURL)s/theme/fonts/MPLUS1p/OFL.txt\">OFL license</a>."
 
-#: templates/index.html:5
+#: templates/index.html:9
 msgid "Articles"
 msgstr "All articles"
+
+#: templates/index.html:15
+msgid "Rien à voir ici... Pour l'instant!"
+msgstr "Nothing to see here... Yet!"
 
