@@ -2,11 +2,17 @@
 
 AUTHOR = "<AUTHOR>"
 SITENAME = "<SITE NAME>"
+# SITESUBTITLE = "<SITE SUBTITLE>"
 SITEURL = ""
 
 # Jinja2 extensions
 JINJA_ENVIRONMENT = {
     "extensions": ["jinja2.ext.do", "jinja2.ext.i18n"]
+}
+
+# Docutils configuration
+DOCUTILS_SETTINGS = {
+    "initial_header_level": 3
 }
 
 ## URLs ##

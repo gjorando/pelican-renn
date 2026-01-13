@@ -24,12 +24,6 @@ html {
     font-weight: 300;
 }
 
-p {
-    margin: 0.25em 0;
-    line-height: 1.2em;
-    text-align: justify;
-}
-
 a {
     color: var(--link-color);
     text-decoration: none;
@@ -37,6 +31,18 @@ a {
 
 abbr[title] {
     text-decoration: none;
+}
+
+header, main {
+    width: 80%;
+    margin: auto;
+
+    p {
+        font-size: 1.1em;
+        margin: 1em 0;
+        line-height: 1.4em;
+        text-align: justify;
+    }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -60,9 +66,18 @@ h3 {
     margin: 0.4em 0;
 }
 
-header, main {
-    width: 80%;
-    margin: auto;
+hgroup {
+    margin: 1em 0;
+
+    h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+        font-style: italic;
+        font-size: 0.85em;
+    }
 }
 
 section {
@@ -72,6 +87,18 @@ section {
 .section-anchor {
     position: relative;
     top: calc(var(--navbar-height) * -1.25);
+}
+
+.figure {
+    margin: 2em 0;
+    text-align: center;
+
+    p {
+        text-align: center;
+        font-size: .75em;
+        font-style: italic;
+        margin: .5em 0;
+    }
 }
 
 /* HEADER */
@@ -85,7 +112,7 @@ header {
     alignment-baseline: alphabetic;
     width: 8em;
     display: block;
-    margin: 0 auto 2em;
+    margin: 0 auto;
 }
 
 /* NAV */
@@ -160,6 +187,8 @@ body > footer {
     padding: 2em;
     background: var(--footer-color);
     p {
+        margin: .25em 0;
+        line-height: 1.4em;
         text-align: center;
     }
 }
@@ -370,6 +399,12 @@ body > footer {
 @media (orientation: landscape) and (min-width: 1024px) {
     h1, h2, h3, h4, h5, h6 {
         text-align: center;
+    }
+
+    hgroup {
+        p {
+            text-align: center;
+        }
     }
 
     nav {

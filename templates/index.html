@@ -1,6 +1,17 @@
 {% extends "!simple/index.html" %}
 {#{% extends "base.html" %}#}
 
+{#{% block title %}#}
+{#    {{ super() }} - Posts#}
+{#{% endblock title %}#}
+
 {% block content_title %}
     <h2>{{ _("Articles") }}</h2>
 {% endblock content_title %}
+
+{% block content %}
+    {{ super() }}
+    {% if not articles_page.object_list %}
+        {{ _("Rien à voir ici... Pour l'instant!") }}
+    {% endif %}
+{% endblock content %}
