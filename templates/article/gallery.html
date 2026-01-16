@@ -1,0 +1,29 @@
+{% extends "!simple/article.html" %}
+
+{% set MENUITEMS = [(_("Retour"), "javascript:history.back()")] %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+    <article>
+        <header>
+                <a href="{{ SITEURL }}/{{ article.metadata.img }}">
+                    {% if "nsfw" in article.metadata.tags %}
+                        <div class="nsfw">NSFW</div>
+                    {% endif %}
+                    <img width=100% src="{{ SITEURL }}/{{ article.metadata.img }}" />
+                </a>
+            <hgroup>
+                <h1>{{ article.title }}</h1>
+                <p>
+                    {{ _("Artiste:") }} <a href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author.name }}</a>
+                    {% if article.metadata.source %}
+                        (<a href="{{ article.metadata.source }}">{{ _("source") }}</a>)
+                    {% endif %}
+                </p>
+            </hgroup>
+        </header>
+        {{ article.content }}
+    </article>
+{% endblock content %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pelican-renn 1.0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-01-13 17:55+0100\n"
+"POT-Creation-Date: 2026-01-16 20:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,11 +26,27 @@ msgstr ""
 msgid "La police de caractères <a href=\"http://mplus-fonts.osdn.jp/\">M<span style=\"vertical-align: super; font-size: 0.8em; line-height: 0;\">+</span> P Type-1</a> est mise à disposition selon les dispositions de la <a href=\"%(SITEURL)s/theme/fonts/MPLUS1p/OFL.txt\">licence OFL</a>."
 msgstr ""
 
-#: templates/index.html:9
+#: templates/index.html:4
 msgid "Articles"
 msgstr ""
 
-#: templates/index.html:15
+#: templates/index.html:10
 msgid "Rien à voir ici... Pour l'instant!"
+msgstr ""
+
+#: templates/article/gallery.html:3
+msgid "Retour"
+msgstr ""
+
+#: templates/article/gallery.html:20
+msgid "Artiste:"
+msgstr ""
+
+#: templates/article/gallery.html:22
+msgid "source"
+msgstr ""
+
+#: templates/category/gallery.html:31
+msgid "Je me demande ce que ce trou cache"
 msgstr ""
 

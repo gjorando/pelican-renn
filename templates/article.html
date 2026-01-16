@@ -1,0 +1,3 @@
+{# This special template allows us to customize the template of certain articles depending on the category, with a default fallback #}
+
+{% include ["article/{}.html".format(category.slug), "article/_.html"] %}

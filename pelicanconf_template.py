@@ -15,6 +15,12 @@ DOCUTILS_SETTINGS = {
     "initial_header_level": 3
 }
 
+# Plugins
+PLUGINS = ["i18n_subsites", "full_gallery"]
+
+# Extract some more metadata about the source file path, ie. the full path, directory, file name, and file name without the extension
+PATH_METADATA = r"(?P<full_path>(?P<directory_path>.*)\/(?P<filename_full>(?P<filename_no_ext>.*)\..*))"
+
 ## URLs ##
 
 # Uncomment following line if you want document-relative URLs when developing
@@ -40,6 +46,10 @@ TAGS_SAVE_AS = "tags/index.html"
 # Articles are accessible under post/{yyyy}/{mm}/{dd}/{slug}/
 ARTICLE_URL = "post/{date:%Y}/{date:%m}/{date:%d}/{slug}/"
 ARTICLE_SAVE_AS = ARTICLE_URL + "index.html"
+
+# Pages are accessible under {path of the source file}/{slug}/
+PAGE_URL = "{directory_path}/{slug}/"
+PAGE_SAVE_AS = PAGE_URL + "index.html"
 
 # Authors are accessible under author/{slug}/
 AUTHOR_URL = "author/{slug}/"
@@ -77,11 +87,18 @@ PATH = "content"
 
 # Source static files
 # STATIC_PATHS = [
-#     "css"
+#     "css",
+#     "images"
 # ]
 
-DEFAULT_PAGINATION = 10
+DEFAULT_ORPHANS = 10  # Minimum number of articles for the last page
+DEFAULT_PAGINATION = 10  # Number of articles per page
 
+# Access subsequent pages via <url>/page/<page number>/
+PAGINATION_PATTERNS = (
+    (1, '{url}', '{save_as}'),
+    (2, '{base_name}/page/{number}/', '{base_name}/page/{number}/index.html'),
+)
 
 # Blogroll
 LINKS = (
