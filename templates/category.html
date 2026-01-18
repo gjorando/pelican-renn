@@ -1,10 +1,9 @@
 {# This special template allows us to customize the template of certain categories, with a default fallback #}
 
-{% if category.slug in CATEGORY_CUSTOM %}
-    {% set CATEGORY_CONTEXT = namespace(CATEGORY_CUSTOM[category.slug]) %}
+{% if category.slug in category.settings.PER_CATEGORY_CONTEXT %}
+    {% set CATEGORY_CONTEXT = namespace(category.settings.PER_CATEGORY_CONTEXT[category.slug]) %}
 {% else %}
     {% set CATEGORY_CONTEXT = namespace() %}
 {% endif %}
-{% set CATEGORY_CONTEXT.page_title = CATEGORY_CONTEXT.page_title or category.name %}
 
 {% include ["category/{}.html".format(category.slug), "category/_.html"] %}

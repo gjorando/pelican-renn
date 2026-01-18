@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pelican-renn 1.0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-01-16 20:56+0100\n"
+"POT-Creation-Date: 2026-01-18 22:06+0100\n"
 "PO-Revision-Date: 2026-01-10 13:28+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -47,8 +47,3 @@ msgstr "Artist:"
 #: templates/article/gallery.html:22
 msgid "source"
 msgstr "source"
-
-#: templates/category/gallery.html:31
-msgid "Je me demande ce que ce trou cache"
-msgstr "I wonder what this tile is hiding"
-
