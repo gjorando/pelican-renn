@@ -455,7 +455,7 @@ body > nav {
 /* FIXME */
 .float-wrapper {
     /* As we cannot float around flex elements, we need to use the old-school way */
-    p {
+    > *:not(.floating-block) {
         margin-bottom: var(--flex-gap);
     }
 }
