@@ -1,9 +1,16 @@
 {# This special template allows us to customize the template of certain categories, with a default fallback #}
 
-{% if category.slug in category.settings.PER_CATEGORY_CONTEXT %}
-    {% set CATEGORY_CONTEXT = namespace(category.settings.PER_CATEGORY_CONTEXT[category.slug]) %}
+{# Take HiddenCategory subclasses into account; retrieve the slug of the base category #}
+{% if category.base_category %}
+    {% set canonical_slug = category.base_category.slug %}
+{% else %}
+    {% set canonical_slug = category.slug %}
+{% endif %}
+
+{% if canonical_slug in category.settings.PER_CATEGORY_CONTEXT %}
+    {% set CATEGORY_CONTEXT = namespace(category.settings.PER_CATEGORY_CONTEXT[canonical_slug]) %}
 {% else %}
     {% set CATEGORY_CONTEXT = namespace() %}
 {% endif %}
 
-{% include ["category/{}.html".format(category.slug), "category/_.html"] %}
+{% include ["category/{}.html".format(canonical_slug), "category/_.html"] %}
