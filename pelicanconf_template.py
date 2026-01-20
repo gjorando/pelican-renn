@@ -119,11 +119,8 @@ THEME = "theme"
 # STYLESHEET_URL = "/css/custom.css"  # Theme overrides
 DISPLAY_PAGES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_MENU = False
-# MENUITEMS = [
-#     ("FOO", "https://perdu.com")
-# ]
-LANDER_MENUITEMS = [
-    ("Blog", "/" + INDEX_URL)
+MENUITEMS = [
+    ("Foo", "https://perdu.com")
 ]
 DISPLAY_SOCIALS_IN_FOOTER = True
 LANDER_DISPLAY_SOCIALS_IN_FOOTER = False

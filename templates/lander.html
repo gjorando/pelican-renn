@@ -1,47 +1,21 @@
 {% extends "base.html" %}
 
-{% set landing_sections = [] %}
-{% for section in hidden_pages if section.slug.startswith("landing-section-hidden-") %}
-    {% do landing_sections.append(section) %}
-{% endfor %}
-
-{% set nav_items = [] %}
-{% for section in landing_sections if section.metadata.nav %}
-    {% do nav_items.append(section) %}
-{% endfor %}
-
 {% block title %}
-    {{ page.title }}
+    {{ page.title|striptags }}
 {% endblock title %}
 
-{% block nav %}
-    {% if nav_items or LANDER_MENUITEMS %}
-        <ul>
-        {% for section in nav_items %}
-            {% if section.metadata.nav %}
-                <li class="landing-anchor-link"><a href="#{{ section.slug|replace("landing-section-hidden-", "") }}">{{ section.metadata.nav }}</a></li>
-            {% endif %}
-        {% endfor %}
-        {% for title, link in LANDER_MENUITEMS %}
-            <li><a href="{{ link }}">{{ title }}</a></li>
-        {% endfor %}
-        </ul>
+{% if page.metadata.nav %}
+    {% if not MENUITEMS %}
+        {% set MENUITEMS = [] %}
     {% endif %}
-{% endblock %}
-
-{# The first section is put in the header #}
-{% block header %}
-    <div id="{{ landing_sections[0].slug|replace("landing-section-hidden-", "") }}" class="section-anchor"></div>
-    <h1>{{ landing_sections[0].title }}</h1>
-    {{ landing_sections[0].content }}
-{% endblock header %}
+    {% set raw_nav = (page.metadata["nav"]|string).split(",") %}
+    {% set nav_links = [] %}
+    {% for raw_link in raw_nav %}
+        {% do nav_links.append(raw_link|parse_link) %}
+    {% endfor %}
+    {% set MENUITEMS = nav_links + MENUITEMS %}
+{% endif %}
 
 {% block content %}
-    {% for section in landing_sections %}{% if not loop.first %}
-        <section>
-            <div id="{{ section.slug|replace("landing-section-hidden-", "") }}" class="section-anchor"></div>
-            <h2>{{ section.title }}</h2>
-            {{ section.content }}
-        </section>
-    {% endif %}{% endfor %}
+    {{ page.content }}
 {% endblock content %}

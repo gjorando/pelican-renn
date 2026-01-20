@@ -11,26 +11,12 @@ To generate the lander page, you must add a page with the following content:
 ###################
 
 :status: hidden
-:slug: lander-page
-:lang: en
 :save_as: index.html
 :template: lander
+:nav: a link <sci-hub.ru>
 ```
 
-This special page is populated with sections; each of these sections is actually a page with a special slug. It is strongly advised to hide these special pages.
-
-```rest
-<Section name>
-##############
-
-:status: hidden
-:nav: <section nav name>
-:slug: landing-section-hidden-<section-name>
-
-<Section content
-```
-
-If the `nav` metadata is set, an anchor to the section is added to the lander page navbar.
+The `nav` metadata is optional, and can be populated with a list of `text <uri>` or `uri` links that will be added to the navbar.
 
 Moreover, `pelican-i18n-subsites` plugin is required.
 
@@ -53,5 +39,4 @@ Additional configuration variables are listed below.
 
 - `DISPLAY_SOCIALS_IN_FOOTER` - Whether to display the social icons (set with `SOCIAL`) in the footer (Default: `False`).
 - `LANDER_DISPLAY_SOCIALS_IN_FOOTER` - Whether to display the social icons (set with `SOCIAL`) in the lander footer (Default: `False`).
-- `LANDER_MENUITEMS` - `MENUITEMS`, but for the lander page (Default: unset).
 - `NAV_ICON` - Icon for the navbar (Default: unset).

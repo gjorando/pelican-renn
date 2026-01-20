@@ -24,18 +24,15 @@
     {% set MENUITEMS = [] %}
 {% endif %}
 {% set MENUITEMS = MENUITEMS + NAV_LANG_LINKS %}
-{# Add language buttons to LANDER_MENUITEMS #}
-{% if not LANDER_MENUITEMS %}
-    {% set LANDER_MENUITEMS = [] %}
-{% endif %}
-{% set LANDER_MENUITEMS = LANDER_MENUITEMS + NAV_LANG_LINKS %}
 
 {# We redefine the whole body to put the navbar on top. #}
 {% block body %}
     <nav>
         {% block nav %}
             <ul>
-                <li class="nav-index"><a href="{{ SITEURL }}"><img src="{{ NAV_ICON }}" alt="{{ SITENAME }}"></a></li>
+                {% if NAV_ICON %}
+                    <li class="nav-index"><a href="{{ SITEURL }}"><img src="{{ NAV_ICON }}" alt="{{ SITENAME }}"></a></li>
+                {% endif %}
                 {% for title, link in MENUITEMS %}
                     <li><a href="{{ link }}">{{ title }}</a></li>
                 {% endfor %}
@@ -52,6 +49,7 @@
             </ul>
         {% endblock nav %}
     </nav>
+
     <header>
         {% block header %}
             <hgroup>
@@ -62,10 +60,12 @@
             </hgroup>
         {% endblock header %}
     </header>
+
     <main>
         {% block content %}
         {% endblock content %}
     </main>
+
     <footer>
         {% block footer %}
             <p>{% trans trimmed %}

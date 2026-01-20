@@ -38,6 +38,8 @@ html {
     color: var(--fg-color);
     font-family: 'M PLUS 1p', sans-serif;
     font-weight: var(--default-font-weight);
+
+    scroll-padding-top: var(--flex-gap);
 }
 
 a {
@@ -179,11 +181,6 @@ body {
         gap: .75em;
         align-items: center;
     }
-}
-
-.section-anchor {
-    position: relative;
-    top: calc(var(--navbar-height) * -1.25);
 }
 
 /* FIXME find a way for pelican to generate that using <figure> and <figcaption> */
@@ -566,6 +563,11 @@ body > nav {
 }
 
 @media (orientation: landscape) and (min-width: 1024px) {
+    /* If the navbar is sticky, take it into account for anchor links */
+    html {
+        scroll-padding-top: calc(var(--navbar-height) + var(--flex-gap));
+    }
+
     body > nav {
         position: sticky;
         top: 0;
