@@ -7,6 +7,7 @@
     {% set canonical_slug = category.slug %}
 {% endif %}
 
+{# Category specific settings #}
 {% if canonical_slug in category.settings.PER_CATEGORY_CONTEXT %}
     {% set CATEGORY_CONTEXT = namespace(category.settings.PER_CATEGORY_CONTEXT[canonical_slug]) %}
 {% else %}

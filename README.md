@@ -16,7 +16,7 @@ To generate the lander page, you must add a page with the following content:
 :nav: a link <sci-hub.ru>
 ```
 
-The `nav` metadata is optional, and can be populated with a list of `text <uri>` or `uri` links that will be added to the navbar.
+The `nav` metadata is optional, and can be populated with a list of `text <uri>` or `uri` links that will be added to the navbar. `save_as` can be set as you want, but if you mean the lander page to be your root index page, you must at least redefine `INDEX_SAVE_AS`.
 
 Moreover, `pelican-i18n-subsites` plugin is required.
 

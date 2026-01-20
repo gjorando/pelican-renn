@@ -74,10 +74,6 @@
             <p>{% trans trimmed %}
                 La police de caractères <a href="http://mplus-fonts.osdn.jp/">M<span style="vertical-align: super; font-size: 0.8em; line-height: 0;">+</span> P Type-1</a> est mise à disposition selon les dispositions de la <a href="{{ SITEURL }}/theme/fonts/MPLUS1p/OFL.txt">licence OFL</a>.
             {% endtrans %}</p>
-            {# If we are on the lander page, DISPLAY_SOCIALS_IN_FOOTER is set to LANDER_DISPLAY_SOCIALS_IN_FOOTER #}
-            {% if output_file == "index.html" %}
-                {% set DISPLAY_SOCIALS_IN_FOOTER = LANDER_DISPLAY_SOCIALS_IN_FOOTER %}
-            {% endif %}
             {% if DISPLAY_SOCIALS_IN_FOOTER %}
                 {% include "snippets/social_footer.html" %}
             {% endif %}
