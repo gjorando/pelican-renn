@@ -4,6 +4,10 @@
     {{ page.title|striptags }}
 {% endblock title %}
 
+{% block header %}
+    <hgroup><h1>{{ page.title }}</h1></hgroup>
+{% endblock header %}
+
 {% if page.metadata.nav %}
     {% if not MENUITEMS %}
         {% set MENUITEMS = [] %}
@@ -15,6 +19,9 @@
     {% endfor %}
     {% set MENUITEMS = nav_links + MENUITEMS %}
 {% endif %}
+
+{# FIXME implement proper overrides for the lander page #}
+{% set NAV_ICON = None %}
 
 {% block content %}
     {{ page.content }}

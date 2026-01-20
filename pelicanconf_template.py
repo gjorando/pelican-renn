@@ -10,11 +10,6 @@ JINJA_ENVIRONMENT = {
     "extensions": ["jinja2.ext.do", "jinja2.ext.i18n"]
 }
 
-# Docutils configuration
-DOCUTILS_SETTINGS = {
-    "initial_header_level": 3
-}
-
 # Plugins
 PLUGINS = ["i18n_subsites", "full_gallery"]
 
