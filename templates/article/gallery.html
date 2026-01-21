@@ -8,11 +8,11 @@
 {% block content %}
     <article>
         <header>
-                <a href="{{ SITEURL }}/{{ article.metadata.img }}">
+                <a href="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}">
                     {% if "nsfw" in article.metadata.tags %}
                         <div class="nsfw">NSFW</div>
                     {% endif %}
-                    <img width=100% src="{{ SITEURL }}/{{ article.metadata.img }}" />
+                    <img width=100% src="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}" />
                 </a>
             <hgroup>
                 <h1>{{ article.title }}</h1>

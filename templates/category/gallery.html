@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}{{ SITENAME|striptags }} - {{ CATEGORY_CONTEXT.page_title }}{% endblock title %}
+{% block title %}{{ SITENAME|striptags }} - {{ CATEGORY_CONTEXT.page_title|d(category.name) }}{% endblock title %}
 
 {% block header %}
-    <h1>{{ category.name }}</h1>
+    <h1>{{ CATEGORY_CONTEXT.page_title|d(category.name) }}</h1>
     <p>{{ CATEGORY_CONTEXT.page_desc }}</p>
 {% endblock header %}
 
@@ -11,7 +11,7 @@
     <section>
         <ul class="gallery">
             {% for article in articles_page.object_list %}
-                <li class="gallery-element" style="background: no-repeat url('{{ SITE_URL }}/{{ article.metadata.img }}'), var(--fg-color); background-size: cover;">
+                <li class="gallery-element" style="background: no-repeat url('{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}'), var(--fg-color); background-size: cover;">
                     {% if "nsfw" in article.metadata.tags %}
                         <div class="nsfw">NSFW</div>
                     {% endif %}
