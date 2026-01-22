@@ -1,0 +1,7 @@
+{% extends "index.html" %}
+
+{% block title %}{{ SITENAME|striptags }} - {% trans trimmed %}Tag {{ tag }}{% endtrans %}{% endblock %}
+
+{% block content_title %}
+    <h2>{% trans trimmed %}Articles avec le tag {{ tag }}{% endtrans %}</h2>
+{% endblock %}

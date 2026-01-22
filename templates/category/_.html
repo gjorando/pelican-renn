@@ -1,2 +1,8 @@
 {# Default fallback for the category.html template#}
-{% extends "!simple/category.html" %}
+{% extends "index.html" %}
+
+{% block title %}{{ SITENAME|striptags }} - {% trans trimmed %}Catégorie {{ category }}{% endtrans %}{% endblock %}
+
+{% block content_title %}
+    <h2>{% trans trimmed %}Articles dans la catégorie {{ category }}{% endtrans %}</h2>
+{% endblock %}

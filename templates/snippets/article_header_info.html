@@ -1,0 +1,12 @@
+{# ARTICLE HEADER INFORMATIONS #}
+
+<div class="article-header-info">
+    <address>
+        {% for author in article.authors %}
+            <span class="article-author"><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a></span>
+        {% endfor %}
+    </address>
+    <div class="article-date">
+        <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"><time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time></a>
+    </div>
+</div>

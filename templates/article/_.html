@@ -1,3 +1,38 @@
 {# Default fallback for the article.html template#}
 {% extends "!simple/article.html" %}
 
+{% block content %}
+    <article>
+        <header>
+            {% if article.category %}
+                <p class="article-category">
+                    <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+                </p>
+            {% endif %}
+            <hgroup>
+                <h2>{{ article.title }}</h2>
+                {% if article.metadata.subtitle %}
+                    <p>{{ article.metadata.subtitle }}</p>
+                {% endif %}
+            </hgroup>
+            {% include "snippets/article_header_info.html" %}
+        </header>
+        {{ article.content }}
+        <footer>
+            {% if article.translations %}
+                <ul class="article-translations">
+                {% for translation in article.translations %}
+                    <li><a href="{{ SITEURL }}/{{ translation.url }}" hreflang="{{ translation.lang }}">{{ translation.lang|get_flag_emoji }}</a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% if article.tags %}
+                <ul class="article-tags">
+                    {% for tag in article.tags %}
+                        <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </footer>
+    </article>
+{% endblock content %}

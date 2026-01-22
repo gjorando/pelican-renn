@@ -1,11 +1,24 @@
 {% extends "!simple/index.html" %}
 
-{% block content_title %}
-    <h2>{{ _("Articles") }}</h2>
-{% endblock content_title %}
-
 {% block content %}
-    {{ super() }}
+    {% block content_title %}
+        <h2>{{ _("Articles") }}</h2>
+    {% endblock content_title %}
+
+    {% for article in articles_page.object_list %}
+        <article>
+            <header>
+                <h3><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark">{{ article.title }}</a></h3>
+                {% include "snippets/article_header_info.html" %}
+            </header>
+            <section>{{ article.summary }}</section>
+        </article>
+    {% endfor %}
+
+    {% if articles_page.has_other_pages() %}
+        {% include 'pagination.html' %}
+    {% endif %}
+
     {% if not articles_page.object_list %}
         {{ _("Rien à voir ici... Pour l'instant!") }}
     {% endif %}

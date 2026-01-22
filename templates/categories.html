@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME|striptags }} - {{ _("Catégories") }}{% endblock %}
+
+{% block content %}
+    <h2>{{ _("Articles par catégorie") }}</h2>
+    <ul>
+        {% for category, articles in categories|sort %}
+            <li><a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a> ({{ articles|count }})</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

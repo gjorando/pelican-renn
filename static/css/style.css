@@ -95,10 +95,12 @@ h1 {
 
 h2 {
     font-size: 1.7rem;
+    margin-bottom: .7rem;
 }
 
 h3 {
     font-size: 1.4rem;
+    margin-bottom: .4rem;
 }
 
 hgroup {
@@ -454,6 +456,89 @@ body > nav {
     /* As we cannot float around flex elements, we need to use the old-school way */
     > *:not(.floating-block) {
         margin-bottom: var(--flex-gap);
+    }
+}
+
+/* ARTICLES */
+
+article {
+    .article-category {
+        font-variant: small-caps;
+        font-weight: var(--fw-medium);
+        font-size: 1.15em;
+
+        &:before, &:after {
+            content: "\2014";
+        }
+    }
+
+    hgroup {
+        margin: 0;
+    }
+
+    .article-header-info {
+        display: flex;
+        flex-direction: column;
+        gap: .25rem;
+    }
+
+    address {
+        display: flex;
+        font-weight: var(--fw-regular);
+
+        .article-author:not(:last-child):after {
+            content: ",\a0";
+        }
+
+        &:before {
+            font-style: normal;
+            content: "\1F464";
+            margin-right: .5rem;
+        }
+    }
+
+    .article-date {
+        display: flex;
+        font-weight: var(--fw-thin);
+
+        &:before {
+            content: "\1F5D3";
+            margin-right: .5rem;
+        }
+    }
+
+    .article-tags {
+        display: flex;
+        list-style-type: none;
+
+        &:before {
+            content: "\1F3F7";
+            margin-right: .5rem;
+        }
+
+        li:not(:last-child):after {
+            content: ",\a0";
+        }
+    }
+
+    .article-translations {
+        display: flex;
+        list-style-type: none;
+
+        &:before {
+            content: "\1F310";
+            margin-right: .5rem;
+        }
+    }
+
+    @media (orientation: landscape) and (min-width: 1024px) {
+        .article-category {
+            text-align: center;
+        }
+
+        address, .article-date, .article-tags, .article-translations {
+            justify-content: center;
+        }
     }
 }
 

@@ -15,6 +15,12 @@ The easiest way to get started is then to copy the content of [the example Pelic
 
 ## Features
 
+### Additional article metadata
+
+#### `subtitle`
+
+Adds a subtitle below the article title.
+
 ### Lander page
 
 To generate the lander page, you must add a page with the following content:
