@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pelican-renn 1.0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-01-18 22:06+0100\n"
+"POT-Creation-Date: 2026-01-22 18:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,21 +17,63 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: templates/base.html:71
+#: templates/archives.html:3 templates/archives.html:6
+msgid "Archives"
+msgstr ""
+
+#: templates/author.html:3 templates/author.html:6
+msgid "Articles par"
+msgstr ""
+
+#: templates/authors.html:3
+msgid "Auteurs"
+msgstr ""
+
+#: templates/authors.html:6
+msgid "Articles par auteur"
+msgstr ""
+
+#: templates/base.html:72
 msgid "Le <a href=\"https://github.com/gjorando/pelican-renn/\">thème</a> de ce site est transféré dans le domaine public selon les termes de la <a href=\"https://unlicense.org\">licence <em>Unlicense</em></a>."
 msgstr ""
 
-#: templates/base.html:74
+#: templates/base.html:75
 #, python-format
-msgid "La police de caractères <a href=\"http://mplus-fonts.osdn.jp/\">M<span style=\"vertical-align: super; font-size: 0.8em; line-height: 0;\">+</span> P Type-1</a> est mise à disposition selon les dispositions de la <a href=\"%(SITEURL)s/theme/fonts/MPLUS1p/OFL.txt\">licence OFL</a>."
+msgid "La police de caractères <a href=\"http://mplus-fonts.osdn.jp/\">M<span style=\"vertical-align: super; font-size: 0.8em; line-height: 0;\">+</span> P Type-1</a> est mise à disposition selon les dispositions de la <a href=\"%(SITEURL)s/%(THEME_STATIC_DIR)s/fonts/MPLUS1p/OFL.txt\">licence OFL</a>."
 msgstr ""
 
-#: templates/index.html:4
+#: templates/categories.html:3
+msgid "Catégories"
+msgstr ""
+
+#: templates/categories.html:6
+msgid "Articles par catégorie"
+msgstr ""
+
+#: templates/index.html:5
 msgid "Articles"
 msgstr ""
 
-#: templates/index.html:10
+#: templates/index.html:23
 msgid "Rien à voir ici... Pour l'instant!"
+msgstr ""
+
+#: templates/tag.html:3
+#, python-format
+msgid "Tag %(tag)s"
+msgstr ""
+
+#: templates/tag.html:6
+#, python-format
+msgid "Articles avec le tag %(tag)s"
+msgstr ""
+
+#: templates/tags.html:3
+msgid "Tags"
+msgstr ""
+
+#: templates/tags.html:6
+msgid "Articles par tag"
 msgstr ""
 
 #: templates/article/gallery.html:3
@@ -44,5 +86,15 @@ msgstr ""
 
 #: templates/article/gallery.html:22
 msgid "source"
+msgstr ""
+
+#: templates/category/_.html:4
+#, python-format
+msgid "Catégorie %(category)s"
+msgstr ""
+
+#: templates/category/_.html:7
+#, python-format
+msgid "Articles dans la catégorie %(category)s"
 msgstr ""
 
