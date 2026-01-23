@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pelican-renn 1.0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-01-22 18:59+0100\n"
+"POT-Creation-Date: 2026-01-23 09:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,6 +56,11 @@ msgstr ""
 
 #: templates/index.html:23
 msgid "Rien à voir ici... Pour l'instant!"
+msgstr ""
+
+#: templates/period_archives.html:5 templates/period_archives.html:8
+#, python-format
+msgid "Archives de %(period_string)s"
 msgstr ""
 
 #: templates/tag.html:3
