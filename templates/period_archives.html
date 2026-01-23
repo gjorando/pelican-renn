@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}{{ SITENAME|striptags }} - {{ _("Archives") }}{% endblock %}
+{% set period_string = period|reverse|join(" ") %}
+
+{% block title %}{{ SITENAME|striptags }} - {% trans trimmed %}Archives de {{ period_string }}{% endtrans %}{% endblock %}
 
 {% block content %}
-    <h2>{{ _("Archives") }}</h2>
+    <h2>{% trans trimmed %}Archives de {{ period_string }}{% endtrans %}</h2>
 
     <dl class="archives-list">
         {% for article in dates %}

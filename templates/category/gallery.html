@@ -12,7 +12,7 @@
         <ul class="gallery">
             {% for article in articles_page.object_list %}
                 <li class="gallery-element" style="background: no-repeat url('{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}'), var(--fg-color); background-size: cover;">
-                    {% if "nsfw" in article.metadata.tags %}
+                    {% if article.metadata.status == "hidden" %}
                         <div class="nsfw">NSFW</div>
                     {% endif %}
                     <a href="{{ SITEURL }}/{{ article.url }}">

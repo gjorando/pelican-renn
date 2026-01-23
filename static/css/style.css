@@ -38,8 +38,14 @@ html {
     color: var(--fg-color);
     font-family: 'M PLUS 1p', sans-serif;
     font-weight: var(--default-font-weight);
-
     scroll-padding-top: var(--flex-gap);
+
+    /* If the navbar is sticky, take it into account for anchor links */
+    @media (orientation: landscape) and (min-width: 1024px) {
+        html {
+            scroll-padding-top: calc(var(--navbar-height) + var(--flex-gap));
+        }
+    }
 }
 
 a {
@@ -218,6 +224,10 @@ body {
     border-radius: 10%;
     width: 8rem;
     display: block;
+
+    @media (orientation: landscape) and (min-width: 1024px) {
+        border-radius: 100%;
+    }
 }
 
 /* NAV */
@@ -281,6 +291,24 @@ body > nav {
 
         img {
             box-shadow: 0 0 0 2px var(--link-color);
+        }
+    }
+
+    /* If the screen is wide enough in landscape, the navbar sticks to the top instead */
+    @media (orientation: landscape) and (min-width: 1024px) {
+        position: sticky;
+        top: 0;
+
+        ul {
+            justify-content: center;
+        }
+
+        .landing-anchor-link {
+            display: list-item;
+        }
+
+        .nav-index img {
+            border-radius: 100%;
         }
     }
 }
@@ -568,7 +596,37 @@ article {
                 font-size: 1.7em;
                 font-weight: var(--title-font-weight);
                 color: var(--fg-color);
+
+                @media (hover: none) {
+                    font-size: 1.7em;
+                    font-weight: var(--title-font-weight);
+                    color: var(--fg-color);
+                    text-shadow: 2px 2px 5px var(--bg-color), 2px 2px 2px var(--bg-color);
+                }
             }
+
+            @media (hover: hover) {
+                opacity: 0;
+                transition: 1s;
+                background: color-mix(in srgb, var(--link-color) 85%, transparent);
+
+                &:hover {
+                    opacity: 1;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    @media (orientation: landscape) and (min-width: 512px) {
+        grid-template-columns: repeat(2, 1fr);
+
+        > *, > * a {
+            border-radius: .5rem;
+        }
+
+        @media (min-width: 1024px) {
+            grid-template-columns: repeat(3, 1fr);
         }
     }
 }
@@ -613,78 +671,6 @@ article {
 
         a {
             background-color: var(--footer-color);
-        }
-    }
-}
-
-/* MEDIA QUERIES */
-
-@media (hover: hover) {
-    .gallery {
-        a {
-            opacity: 0;
-            transition: 1s;
-            background: color-mix(in srgb, var(--link-color) 85%, transparent);
-
-            h3 {
-
-            }
-        }
-
-        a:hover {
-            opacity: 1;
-            text-decoration: none;
-        }
-    }
-}
-
-@media (hover: none) {
-    .gallery h3 {
-        font-size: 1.7em;
-        font-weight: var(--title-font-weight);
-        color: var(--fg-color);
-        text-shadow: 2px 2px 5px var(--bg-color), 2px 2px 2px var(--bg-color);
-    }
-}
-
-@media (orientation: landscape) and (min-width: 1024px) {
-    /* If the navbar is sticky, take it into account for anchor links */
-    html {
-        scroll-padding-top: calc(var(--navbar-height) + var(--flex-gap));
-    }
-
-    body > nav {
-        position: sticky;
-        top: 0;
-
-        ul {
-            justify-content: center;
-        }
-
-        .landing-anchor-link {
-            display: list-item;
-        }
-
-        .nav-index img {
-            border-radius: 100%;
-        }
-    }
-
-    .profile-picture {
-        border-radius: 100%;
-    }
-}
-
-@media (orientation: landscape) and (min-width: 512px) {
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-
-        > *, > * a {
-            border-radius: .5rem;
-        }
-
-        @media (min-width: 1024px) {
-            grid-template-columns: repeat(3, 1fr);
         }
     }
 }
