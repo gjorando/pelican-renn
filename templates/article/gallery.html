@@ -9,10 +9,8 @@
     <article>
         <header>
             <a href="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}">
-                {% if article.metadata.status == "hidden" %}
-                    <div class="nsfw">NSFW</div>
-                {% endif %}
-                <img width=100% src="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}" />
+                {% include "snippets/nsfw_stamp.html" %}
+                <img class="w-full" src="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}" />
             </a>
             <hgroup>
                 <h1>{{ article.title }}</h1>

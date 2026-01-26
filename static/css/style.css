@@ -70,8 +70,9 @@
         }
     }
 
-    a:has(> img) {
-        @apply *:duration-500 hover:*:scale-102 pointer-coarse:*:ring-4 pointer-coarse:*:ring-link;
+    main a:has(> img) {
+        /*@apply *:duration-500 hover:*:scale-102 pointer-coarse:*:ring-4 pointer-coarse:*:ring-link;*/
+        @apply inline-block duration-500 hover:scale-102 pointer-coarse:ring-4 pointer-coarse:ring-link;
     }
 }
 
