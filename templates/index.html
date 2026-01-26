@@ -1,4 +1,4 @@
-{% extends "!simple/index.html" %}
+{% extends "base.html" %}
 
 {% block content %}
     {% block content_title %}
@@ -6,8 +6,8 @@
     {% endblock content_title %}
 
     {% for article in articles_page.object_list %}
-        <article>
-            <header>
+        <article class="mb-2">
+            <header class="base-flex">
                 <h3><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark">{{ article.title }}</a></h3>
                 {% include "snippets/article_header_info.html" %}
             </header>
@@ -16,7 +16,7 @@
     {% endfor %}
 
     {% if articles_page.has_other_pages() %}
-        {% include 'pagination.html' %}
+        {% include "snippets/pagination.html" %}
     {% endif %}
 
     {% if not articles_page.object_list %}

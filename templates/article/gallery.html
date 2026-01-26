@@ -1,4 +1,4 @@
-{% extends "!simple/article.html" %}
+{% extends "article/_.html" %}
 
 {% set MENUITEMS = [(_("Retour"), "javascript:history.back()")] %}
 
@@ -8,12 +8,12 @@
 {% block content %}
     <article>
         <header>
-                <a href="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}">
-                    {% if article.metadata.status == "hidden" %}
-                        <div class="nsfw">NSFW</div>
-                    {% endif %}
-                    <img width=100% src="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}" />
-                </a>
+            <a href="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}">
+                {% if article.metadata.status == "hidden" %}
+                    <div class="nsfw">NSFW</div>
+                {% endif %}
+                <img width=100% src="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}" />
+            </a>
             <hgroup>
                 <h1>{{ article.title }}</h1>
                 <p>

@@ -9,20 +9,20 @@
 
 {% block content %}
     <section>
-        <ul class="gallery">
+        <ul class="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {% for article in articles_page.object_list %}
-                <li class="gallery-element" style="background: no-repeat url('{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}'), var(--fg-color); background-size: cover;">
+                <li class="aspect-16/9 md:rounded-lg" style="background: no-repeat url('{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}'), var(--color-foreground); background-size: cover; background-position: center;">
                     {% if article.metadata.status == "hidden" %}
-                        <div class="nsfw">NSFW</div>
+                        <div class="absolute m-1 p-1 rounded-md bg-warn text-fg text-[.5rem] font-bold">NSFW</div>
                     {% endif %}
-                    <a href="{{ SITEURL }}/{{ article.url }}">
-                        <h3>{{ article.title }}</h3>
+                    <a class="flex items-center rounded-[inherit] justify-center p-1 w-full h-full no-underline bg-[color-mix(in_srgb,_var(--color-link)_85%,_transparent)] pointer-coarse:bg-[color-mix(in_srgb,_var(--color-link)_30%,_transparent)] duration-1000 not-pointer-coarse:opacity-0 hover:opacity-100" href="{{ SITEURL }}/{{ article.url }}">
+                        <h3 class="text-foreground pointer-coarse:text-shadow-lg text-shadow-background">{{ article.title }}</h3>
                     </a>
                 </li>
             {% endfor %}
         </ul>
     </section>
     {% if articles_page.has_other_pages() %}
-        {% include "pagination.html" %}
+        {% include "snippets/pagination.html" %}
     {% endif %}
 {% endblock content %}

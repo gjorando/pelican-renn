@@ -1,9 +1,8 @@
 {# SOCIAL ICONS #}
-
 {% if SOCIAL %}
-    <ul class="social-icons">
+    <ul class="flex justify-center gap-0.5">
         {% for social, link in SOCIAL %}
-            <li><a href="{{ link }}" title="{{ social }}" style="mask: url('{{SITEURL}}/{{ THEME_STATIC_DIR }}/images/{{ social|lower }}-icon.svg') no-repeat center/contain"></a></li>
+            <li class="group duration-1000 flex items-center p-1 rounded-xs hover:bg-link"><a class="duration-1000 bg-link w-8 h-8 group-hover:bg-footer" href="{{ link }}" title="{{ social }}" style="mask: url('{{SITEURL}}/{{ THEME_STATIC_DIR }}/images/{{ social|lower }}-icon.svg') no-repeat center/contain"></a></li>
         {% endfor %}
     </ul>
 {% endif %}

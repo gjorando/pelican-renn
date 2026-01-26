@@ -1,56 +1,87 @@
-{% extends "!simple/base.html" %}
-
+{# gettext stub #}
 {% if 'jinja2.ext.i18n' not in JINJA_ENVIRONMENT.extensions %}
     {%- macro _(msg) -%}
         {{ msg % kwargs }}
     {%- endmacro -%}
 {% endif %}
 
-{% block head %}
-    {# We extend from simple by adding our base css stylesheets #}
-    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css" />
-    {{ super() }}
-{% endblock %}
-
-{# Define lang button elements #}
-{% set NAV_LANG_LINKS = [] %}
-{% for lang, url in extra_siteurls|items %}
-    {% do NAV_LANG_LINKS.append(("<span class='nav-lang-link'>{}</span>".format(lang), "{}/".format(url))) %}
-{% endfor %}
-
-{# Add language buttons to MENUITEMS #}
-{% if not MENUITEMS %}
-    {% set MENUITEMS = [] %}
-{% endif %}
-{% set MENUITEMS = MENUITEMS + NAV_LANG_LINKS %}
-
-{# We redefine the whole body to put the navbar on top. #}
-{% block body %}
-    <nav>
+<!DOCTYPE html>
+<html lang="{% block html_lang %}{{ DEFAULT_LANG }}{% endblock html_lang %}">
+    <head>
+    {% block head %}
+        <title>
+        {% block title %}
+            {{ SITENAME|striptags }}
+        {% endblock title %}
+        </title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% if SITESUBTITLE %}
+            <meta name="description" content="{{ SITESUBTITLE }}" />
+        {% endif %}
+        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css" />
+        {% if STYLESHEET_URL %}
+            <link rel="stylesheet" type="text/css" href="{{ STYLESHEET_URL }}" />
+        {% endif %}
+        {% if FEED_ALL_ATOM %}
+            <link href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME|striptags }} Full Atom Feed" />
+        {% endif %}
+        {% if FEED_ALL_RSS %}
+            <link href="{{ FEED_DOMAIN }}/{% if FEED_ALL_RSS_URL %}{{ FEED_ALL_RSS_URL }}{% else %}{{ FEED_ALL_RSS }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME|striptags }} Full RSS Feed" />
+        {% endif %}
+        {% if FEED_ATOM %}
+            <link href="{{ FEED_DOMAIN }}/{%if FEED_ATOM_URL %}{{ FEED_ATOM_URL }}{% else %}{{ FEED_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME|striptags }} Atom Feed" />
+        {% endif %}
+        {% if FEED_RSS %}
+            <link href="{{ FEED_DOMAIN }}/{% if FEED_RSS_URL %}{{ FEED_RSS_URL }}{% else %}{{ FEED_RSS }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME|striptags }} RSS Feed" />
+        {% endif %}
+        {% if CATEGORY_FEED_ATOM and category %}
+            <link href="{{ FEED_DOMAIN }}/{% if CATEGORY_FEED_ATOM_URL %}{{ CATEGORY_FEED_ATOM_URL.format(slug=category.slug) }}{% else %}{{ CATEGORY_FEED_ATOM.format(slug=category.slug) }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME|striptags }} Categories Atom Feed" />
+        {% endif %}
+        {% if CATEGORY_FEED_RSS and category %}
+            <link href="{{ FEED_DOMAIN }}/{% if CATEGORY_FEED_RSS_URL %}{{ CATEGORY_FEED_RSS_URL.format(slug=category.slug) }}{% else %}{{ CATEGORY_FEED_RSS.format(slug=category.slug) }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME|striptags }} Categories RSS Feed" />
+        {% endif %}
+        {% if TAG_FEED_ATOM and tag %}
+            <link href="{{ FEED_DOMAIN }}/{% if TAG_FEED_ATOM_URL %}{{ TAG_FEED_ATOM_URL.format(slug=tag.slug) }}{% else %}{{ TAG_FEED_ATOM.format(slug=tag.slug) }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME|striptags }} Tags Atom Feed" />
+        {% endif %}
+        {% if TAG_FEED_RSS and tag %}
+            <link href="{{ FEED_DOMAIN }}/{% if TAG_FEED_RSS_URL %}{{ TAG_FEED_RSS_URL.format(slug=tag.slug) }}{% else %}{{ TAG_FEED_RSS.format(slug=tag.slug) }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME|striptags }} Tags RSS Feed" />
+        {% endif %}
+    {% endblock head %}
+    </head>
+    <body class="base-flex items-center text-lg">
+    {% block body %}
+        <nav class="self-stretch bg-background z-100 text-xl lg:sticky lg:top-0">
         {% block nav %}
-            <ul>
+            {# Common nav element and element link classes #}
+            {% set menu_item_classes = "group font-bold small-caps" %}
+            {% set menu_link_classes = "inline-block px-4 leading-(--dim-navbar-height) duration-1000 group-hover:bg-link group-hover:text-background group-hover:no-underline" %}
+            <menu class="flex h-(--dim-navbar-height) justify-left lg:justify-center">
                 {% if NAV_ICON %}
-                    <li class="nav-index"><a href="{{ SITEURL }}"><img src="{{ NAV_ICON }}" alt="{{ SITENAME }}"></a></li>
+                    <li class="{{ menu_item_classes }}"><a class="{{ menu_link_classes }} group-hover:bg-transparent" href="{{ SITEURL }}"><img class="h-10 inline align-middle rounded-lg lg:rounded-full duration-1000 group-hover:ring-2 ring-link" src="{{ NAV_ICON }}" alt="{{ SITENAME }}"></a></li>
                 {% endif %}
                 {% for title, link in MENUITEMS %}
-                    <li><a href="{{ link }}">{{ title }}</a></li>
+                    <li class="{{ menu_item_classes }}"><a class="{{ menu_link_classes }}" href="{{ link }}">{{ title }}</a></li>
                 {% endfor %}
                 {% if DISPLAY_PAGES_ON_MENU %}
                     {% for p in pages %}
-                        <li><a href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
+                        <li class="{{ menu_item_classes }}"><a class="{{ menu_link_classes }}" href="{{ SITEURL }}/{{ p.url }}" {% if p==page %} aria-current="page" {% endif %}>{{ p.title }}</a></li>
                     {% endfor %}
                 {% endif %}
                 {% if DISPLAY_CATEGORIES_ON_MENU %}
                     {% for cat, null in categories %}
-                        <li><a href="{{ SITEURL }}/{{ cat.url }}" {% if cat==category %} aria-current="page" {% endif %}>{{ cat}}</a></li>
+                        <li class="{{ menu_item_classes }}"><a class="{{ menu_link_classes }}" href="{{ SITEURL }}/{{ cat.url }}" {% if cat==category %} aria-current="page" {% endif %}>{{ cat}}</a></li>
                     {% endfor %}
                 {% endif %}
-            </ul>
+                {% for lang, link in extra_siteurls|items %}
+                    <li class="{{ menu_item_classes }} font-normal italic"><a class="{{ menu_link_classes }}" href="{{ link }}/">{{ lang }}</a></li>
+                {% endfor %}
+            </menu>
         {% endblock nav %}
-    </nav>
+        </nav>
 
-    <header>
+        <header class="body-element">
         {% block header %}
             <hgroup>
                 <h1>{{ SITENAME }}</h1>
@@ -60,14 +91,14 @@
             </hgroup>
             <hr />
         {% endblock header %}
-    </header>
+        </header>
 
-    <main>
+        <main class="body-element">
         {% block content %}
         {% endblock content %}
-    </main>
+        </main>
 
-    <footer>
+        <footer class="self-stretch bg-footer p-8 mt-6 flex flex-col items-center text-base gap-2">
         {% block footer %}
             <p>{% trans trimmed %}
                 Le <a href="https://github.com/gjorando/pelican-renn/">thème</a> de ce site est transféré dans le domaine public selon les termes de la <a href="https://unlicense.org">licence <em>Unlicense</em></a>.
@@ -79,5 +110,7 @@
                 {% include "snippets/social_footer.html" %}
             {% endif %}
         {% endblock footer %}
-    </footer>
-{% endblock body %}
+        </footer>
+    {% endblock body %}
+    </body>
+</html>

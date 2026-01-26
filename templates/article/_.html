@@ -1,15 +1,36 @@
-{# Default fallback for the article.html template#}
-{% extends "!simple/article.html" %}
+{# Default fallback for the article.html template #}
+{% extends "base.html" %}
+
+{% block html_lang %}{{ article.lang }}{% endblock %}
+{% block title %}{{ SITENAME|striptags }} - {{ article.title|striptags  }}{% endblock %}
+
+{% block head %}
+    {{ super() }}
+
+    {# FIXME remove this last dependency to simple theme' #}
+    {% import '!simple/translations.html' as translations with context %}
+    {% if translations.entry_hreflang(article) %}
+        {{ translations.entry_hreflang(article) }}
+    {% endif %}
+
+    {% if article.description %}
+        <meta name="description" content="{{article.description}}" />
+    {% endif %}
+
+    {% for tag in article.tags %}
+        <meta name="tags" content="{{tag}}" />
+    {% endfor %}
+{% endblock %}
 
 {% block content %}
     <article>
-        <header>
+        <header class="base-flex">
             {% if article.category %}
-                <p class="article-category">
+                <p class="small-caps font-medium text-lg [&:before,&:after]:content-['\2014'] lg:text-center">
                     <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
                 </p>
             {% endif %}
-            <hgroup>
+            <hgroup class="m-0">
                 <h2>{{ article.title }}</h2>
                 {% if article.metadata.subtitle %}
                     <p>{{ article.metadata.subtitle }}</p>
@@ -18,18 +39,18 @@
             {% include "snippets/article_header_info.html" %}
         </header>
         {{ article.content }}
-        <footer>
+        <footer class="base-flex">
             {% if article.translations %}
-                <ul class="article-translations">
+                <ul class="flex before:mr-2 before:content-['\1F310'] lg:justify-center">
                 {% for translation in article.translations %}
                     <li><a href="{{ SITEURL }}/{{ translation.url }}" hreflang="{{ translation.lang }}">{{ translation.lang|get_flag_emoji }}</a></li>
                 {% endfor %}
                 </ul>
             {% endif %}
             {% if article.tags %}
-                <ul class="article-tags">
+                <ul class="flex before:mr-2 before:content-['\1F3F7'] lg:justify-center">
                     {% for tag in article.tags %}
-                        <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></li>
+                        <li class="{% if not loop.last %}after:content-[',\a0']{% endif %}"><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></li>
                     {% endfor %}
                 </ul>
             {% endif %}

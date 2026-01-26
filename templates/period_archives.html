@@ -7,10 +7,10 @@
 {% block content %}
     <h2>{% trans trimmed %}Archives de {{ period_string }}{% endtrans %}</h2>
 
-    <dl class="archives-list">
+    <dl class="flex flex-col lg:items-center">
         {% for article in dates %}
             <dt>{{ article.locale_date }}</dt>
-            <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
+            <dd class="mb-1"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
         {% endfor %}
     </dl>
 {% endblock %}

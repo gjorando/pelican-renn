@@ -1,12 +1,11 @@
 {# ARTICLE HEADER INFORMATIONS #}
-
-<div class="article-header-info">
-    <address>
+<div class="flex flex-col gap-1">
+    <address class="flex font-normal before:mr-2 before:not-italic before:content-['\1F464'] lg:justify-center">
         {% for author in article.authors %}
-            <span class="article-author"><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a></span>
+            <span class="{% if not loop.last %}after:content-[',\a0']{% endif %}"><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a></span>
         {% endfor %}
     </address>
-    <div class="article-date">
+    <div class="flex font-thin before:mr-2 before:content-['\1F5D3'] lg:justify-center">
         <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"><time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time></a>
     </div>
 </div>
