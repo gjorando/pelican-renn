@@ -14,8 +14,6 @@
 
     /* DIMENSIONS */
     --dim-navbar-height: 60px;
-    --dim-default-font-weight: var(--fw-light);
-    --dim-title-font-weight: var(--fw-bold);
 }
 
 @layer base {
@@ -70,19 +68,17 @@
         }
     }
 
+    figure {
+        @apply flex flex-col items-center gap-1;
+        @apply italic text-sm;
+    }
+
     main a:has(> img) {
-        /*@apply *:duration-500 hover:*:scale-102 pointer-coarse:*:ring-4 pointer-coarse:*:ring-link;*/
         @apply inline-block duration-500 hover:scale-102 pointer-coarse:ring-4 pointer-coarse:ring-link;
     }
 }
 
 @layer components {
-    /* FIXME find a way for pelican to generate that using <figure> and <figcaption> */
-    .figure {
-        @apply flex flex-col items-center gap-1;
-        @apply italic text-sm;
-    }
-
     .profile-picture {
         @apply rounded-2xl lg:rounded-full w-32;
     }
@@ -92,8 +88,8 @@
 @utility body-element {
     @apply w-4/5 lg:w-1/2;
     @apply base-flex;
-    /* FIXME for .section (pelican generated), and first "section" of a content */
-    > section, > article, .section {
+
+    section, > article {
         @apply base-flex;
     }
 
