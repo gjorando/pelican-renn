@@ -76,6 +76,25 @@
     main a:has(> img) {
         @apply inline-block duration-500 hover:scale-102 pointer-coarse:ring-4 pointer-coarse:ring-link;
     }
+
+    [popover] {
+        @apply z-200;
+        @apply opacity-0 open:opacity-100 starting:open:opacity-0;
+        transition: opacity 0.5s linear, display 0.5s linear allow-discrete, overlay 0.5s linear allow-discrete;
+    }
+
+    [popover] + .popover-overlay {
+        @apply z-199;
+        @apply fixed inset-0 bg-background/75;
+        @apply hidden;
+        @apply opacity-0;
+        transition: opacity 0.5s linear, display 0.5s linear allow-discrete;
+    }
+
+    [popover]:popover-open + .popover-overlay {
+        @apply block;
+        @apply opacity-100 starting:opacity-0;
+    }
 }
 
 @layer components {
