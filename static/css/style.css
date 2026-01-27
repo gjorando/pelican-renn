@@ -20,7 +20,7 @@
     html {
         @apply bg-background text-foreground;
         @apply font-display font-light;
-        @apply scroll-pt-(--spacing(4)) lg:scroll-pt-[calc(var(--dim-navbar-height)+var(--spacing(4)))];
+        @apply lg:scroll-pt-(--dim-navbar-height);
         @apply text-justify;
     }
 
