@@ -11,7 +11,7 @@
     <section>
         <ul class="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {% for article in articles_page.object_list %}
-                <li class="aspect-16/9 md:rounded-lg" style="background: no-repeat url('{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}'), var(--color-foreground); background-size: cover; background-position: center;">
+                <li class="aspect-16/9 md:rounded-lg" style="background: no-repeat url('{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img|get_thumbnail("gallery") }}'), var(--color-foreground); background-size: cover; background-position: center;">
                     {% include "snippets/nsfw_stamp.html" %}
                     <a class="flex items-center rounded-[inherit] justify-center p-1 w-full h-full no-underline bg-[color-mix(in_srgb,_var(--color-link)_85%,_transparent)] pointer-coarse:bg-[color-mix(in_srgb,_var(--color-link)_30%,_transparent)] duration-1000 not-pointer-coarse:opacity-0 hover:opacity-100" href="{{ SITEURL }}/{{ article.url }}">
                         <h3 class="text-foreground pointer-coarse:text-shadow-lg text-shadow-background">{{ article.title }}</h3>

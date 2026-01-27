@@ -8,9 +8,9 @@
 {% block content %}
     <article>
         <header>
-            <a href="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}">
+            <a title="{{ _("Cliquez pour l'image en pleine taille") }}" href="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}">
                 {% include "snippets/nsfw_stamp.html" %}
-                <img class="w-full" src="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}" />
+                <img class="w-full" src="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img|get_thumbnail("preview") }}" />
             </a>
             <hgroup>
                 <h1>{{ article.title }}</h1>
