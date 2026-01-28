@@ -114,21 +114,8 @@ SOCIAL = (
 ## HIDDEN CATEGORIES ##
 
 HIDDENCATEGORY_ENABLE = True
-
 # Hidden categories are accessible under {base_name}/full/
 HIDDENCATEGORY_URL = "{base_category.url}full/"
-
-# Per-category settings
-HIDDENCATEGORY_OVERRIDES = {
-    "gallery": {
-        "PER_CATEGORY_CONTEXT": {
-            "gallery": {
-                "page_desc": "A description for the hidden category.",
-            }
-        },
-        "HIDDENCATEGORY_NAME": "{base_category.name} (full)"
-    }
-}
 
 ## NOINDEX CATEGORIES ##
 
@@ -146,23 +133,9 @@ MENUITEMS = [
     ("Gallery", "/" + CATEGORY_URL.format(slug="gallery"))
 ]
 NAV_ICON = "images/icon.png"
-
-# Variables for category specific templates
-PER_CATEGORY_CONTEXT = {
-    "gallery": {
-        "page_desc": "A description for the category.",
-    },
-}
-
-# Overrides for the lander template
-LANDER_OVERRIDES = {
-    "MENUITEMS": [
-        ("Blog", "/" + INDEX_URL),
-        ("Gallery", "/" + CATEGORY_URL.format(slug="gallery")),
-    ],
-    "DISPLAY_SOCIALS_IN_FOOTER": False,
-    "NAV_ICON": None
-}
+# FAVICON = "images/favicon.ico"
+# CONTENT_LICENSE = ("CC BY-NC-ND 4.0", "https://creativecommons.org/licenses/by-nc-nd/4.0/")
+# LICENSE_MARK = 'Licensed under the <a href="{license_url}">{license_name}</a>.'
 
 ## TAILWIND CSS ##
 
@@ -209,6 +182,8 @@ I18N_SUBSITES = {
     # French overrides
     "fr": {
         "THUMBNAIL_ENABLE": False,
+        # "CONTENT_LICENSE": ("CC BY-NC-ND 4.0", "https://creativecommons.org/licenses/by-nc-nd/4.0/deed.fr"),
+        # "LICENSE_MARK": 'Sous licence <a href="{license_url}">{license_name}</a>.',
         "LOCALE": "fr_CA",
         "MENUITEMS": [
             ("Galerie", "/fr/" + CATEGORY_URL.format(slug="gallery")),

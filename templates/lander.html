@@ -1,15 +1,6 @@
-{% extends "base.html" %}
+{% extends "page.html" %}
 
-{# TODO add a plugin functionality to define arbitrary overrides #}
-{#{% if LANDER_OVERRIDES %}#}
-{#    {% set NAV_ICON = LANDER_OVERRIDES.NAV_ICON|d(NAV_ICON) %}#}
-{#    {% set DISPLAY_SOCIALS_IN_FOOTER = LANDER_OVERRIDES.DISPLAY_SOCIALS_IN_FOOTER|d(DISPLAY_SOCIALS_IN_FOOTER) %}#}
-{#    {% set MENUITEMS = LANDER_OVERRIDES.MENUITEMS|d(MENUITEMS) %}#}
-{#{% endif %}#}
-
-{% block title %}
-    {{ page.title|striptags }}
-{% endblock title %}
+{% block title %}{{ page.title|striptags }}{% endblock title %}
 
 {% block header %}
     <hgroup><h1>{{ page.title }}</h1></hgroup>

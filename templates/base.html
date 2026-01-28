@@ -7,6 +7,7 @@
 
 <!DOCTYPE html>
 <html lang="{% block html_lang %}{{ DEFAULT_LANG }}{% endblock html_lang %}">
+    <!-- Jinja template: {{ self._TemplateReference__context.name }} -->
     <head>
     {% block head %}
         <title>
@@ -16,7 +17,7 @@
         </title>
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {% if SITESUBTITLE %}
             <meta name="description" content="{{ SITESUBTITLE }}" />
         {% endif %}
@@ -48,6 +49,12 @@
         {% if TAG_FEED_RSS and tag %}
             <link href="{{ FEED_DOMAIN }}/{% if TAG_FEED_RSS_URL %}{{ TAG_FEED_RSS_URL.format(slug=tag.slug) }}{% else %}{{ TAG_FEED_RSS.format(slug=tag.slug) }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME|striptags }} Tags RSS Feed" />
         {% endif %}
+        {% if CONTENT_LICENSE %}
+            <link rel="license" href="{{ CONTENT_LICENSE.1 }}" title="{{ CONTENT_LICENSE.0 }}" />
+        {% endif %}
+        {% if FAVICON %}
+            <link rel="icon" href="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ FAVICON }}" />
+        {% endif %}
     {% endblock head %}
     </head>
     <body class="base-flex items-center text-lg">
@@ -59,7 +66,7 @@
             {% set menu_link_classes = "inline-block px-4 leading-(--dim-navbar-height) duration-1000 group-hover:bg-link group-hover:text-background group-hover:no-underline" %}
             <menu class="flex h-(--dim-navbar-height) justify-left lg:justify-center">
                 {% if NAV_ICON %}
-                    <li class="{{ menu_item_classes }}"><a class="{{ menu_link_classes }} group-hover:bg-transparent" href="{{ SITEURL }}"><img class="h-10 inline align-middle rounded-lg lg:rounded-full duration-1000 group-hover:ring-2 ring-link" src="{{ NAV_ICON }}" alt="{{ SITENAME }}"></a></li>
+                    <li class="{{ menu_item_classes }}"><a class="{{ menu_link_classes }} group-hover:bg-transparent" href="{{ SITEURL }}"><img class="h-10 inline align-middle rounded-lg lg:rounded-full duration-1000 group-hover:ring-2 ring-link" src="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ NAV_ICON }}" alt="{{ SITENAME }}"></a></li>
                 {% endif %}
                 {% for title, link in MENUITEMS %}
                     <li class="{{ menu_item_classes }}"><a class="{{ menu_link_classes }}" href="{{ link }}">{{ title }}</a></li>
@@ -98,7 +105,7 @@
         {% endblock content %}
         </main>
 
-        <footer class="self-stretch bg-footer p-8 mt-6 flex flex-col items-center text-base gap-2">
+        <footer class="self-stretch bg-footer p-8 mt-6 flex flex-col items-center text-base text-center gap-2">
         {% block footer %}
             <p>{% trans trimmed theme_url="https://github.com/gjorando/pelican-renn/", license_url="https://unlicense.org" %}
                 Le <a href="{{ theme_url }}">thème</a> de ce site est transféré dans le domaine public selon les termes de la <a href="{{ license_url }}">licence <em>Unlicense</em></a>.
@@ -106,6 +113,9 @@
             <p>{% trans trimmed font_link="<a href=\"http://mplus-fonts.osdn.jp/\">M<span style=\"vertical-align: super; font-size: 0.8em; line-height: 0;\">+</span> P Type-1</a>", license_url="%s/%s/fonts/MPLUS1p/OFL.txt" % (SITEURL, THEME_STATIC_DIR) %}
                 La police de caractères {{ font_link }} est mise à disposition selon les dispositions de la <a href="{{ license_url }}">licence OFL</a>.
             {% endtrans %}</p>
+            {% if CONTENT_LICENSE and LICENSE_MARK %}
+                <p>{{ LICENSE_MARK.format(license_name=CONTENT_LICENSE[0], license_url=CONTENT_LICENSE[1]) }}</p>
+            {% endif %}
             {% if DISPLAY_SOCIALS_IN_FOOTER %}
                 {% include "snippets/social_footer.html" %}
             {% endif %}

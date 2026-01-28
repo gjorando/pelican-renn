@@ -19,7 +19,7 @@ The easiest way to get started is then to copy the content of [the example Pelic
 
 #### `subtitle`
 
-Adds a subtitle below the article title.
+Adds a subtitle below the article/page title.
 
 ### Lander page
 
@@ -110,3 +110,14 @@ List of `(text, url)` links to add to the navbar.
 
 Optional clickable icon for the navbar that links back to the website root.
 
+#### `FAVICON`
+
+Optional favicon.
+
+#### `CONTENT_LICENSE`
+
+Optional `(name, url)` tuple for the license of the content. It is added to a `rel="license"` `link` attribute in the HTML `head` section, as well as the footer of every page.
+
+#### `LICENSE_MARK`
+
+Optional format string for the license of the content. If it is set with `CONTENT_LICENSE`, it is added to the footer. `license_name` and `license_url` can be used as formatting variables.

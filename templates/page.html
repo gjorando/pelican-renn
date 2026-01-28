@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block html_lang %}{{ page.lang }}{% endblock %}
+{% block title %}{{ SITENAME|striptags }} - {{ page.title|striptags }}{%endblock%}
+
+{% block head %}
+    {{ super() }}
+
+    {% if page.tags %}
+        <meta name="keywords" content="{{ page.tags|join(",") }}" />
+    {% endif %}
+
+    <meta name="author" content="{{ page.author.name }}" />
+    <link rel="author" href="{{ SITEURL }}/{{ page.author.url }}" />
+    <link rel="canonical" href="{{ SITEURL }}/{{ page.url }}" />
+
+    {% if page.translations %}
+        {% for translation in page.translations %}
+            <link rel="alternate" hreflang="{{ translation.lang }}" href="{{ SITEURL }}/{{ translation.url }}" />
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <article>
+        <header class="base-flex">
+            {% block content_header %}
+                <hgroup class="m-0">
+                    <h2>{{ page.title }}</h2>
+                    {% if page.metadata.subtitle %}
+                        <p>{{ page.metadata.subtitle }}</p>
+                    {% endif %}
+                </hgroup>
+            {% endblock content_header %}
+        </header>
+        {{ page.content }}
+        <footer class="base-flex">
+            {% block content_footer %}
+                {% if page.modified %}
+                    <p class="text-sm italic opacity-60">{{ _("Dernière mise à jour le %(modified_date)s.", modified_date=page.locale_modified) }} </p>
+                {% endif %}
+
+                {% if page.tags %}
+                    <ul class="flex before:mr-2 before:content-['\1F3F7'] lg:justify-center">
+                        {% for tag in page.tags %}
+                            <li class="{% if not loop.last %}after:content-[',\a0']{% endif %}"><a rel="tag" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                {% if page.translations %}
+                    <ul class="flex before:mr-2 before:content-['\1F310'] lg:justify-center">
+                    {% for translation in page.translations %}
+                        <li><a href="{{ SITEURL }}/{{ translation.url }}" hreflang="{{ translation.lang }}">{{ translation.lang|get_flag_emoji }}</a></li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endblock content_footer %}
+        </footer>
+    </article>
+{% endblock content %}

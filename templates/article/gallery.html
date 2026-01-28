@@ -19,7 +19,7 @@
                         Artiste: {{ artist_link }}
                     {% endtrans %}
                     {% if article.metadata.source %}
-                        (<a href="{{ article.metadata.source }}">{{ _("source") }}</a>)
+                        (<a rel="external" href="{{ article.metadata.source }}">{{ _("source") }}</a>)
                     {% endif %}
                 </p>
             </hgroup>

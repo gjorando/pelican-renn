@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pelican-renn 1.0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-01-28 17:00+0100\n"
+"POT-Creation-Date: 2026-01-28 20:10+0100\n"
 "PO-Revision-Date: 2026-01-10 13:28+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -35,12 +35,12 @@ msgstr "All authors"
 msgid "Articles par auteur"
 msgstr "Articles by author"
 
-#: templates/base.html:103
+#: templates/base.html:110
 #, python-format
 msgid "Le <a href=\"%(theme_url)s\">thème</a> de ce site est transféré dans le domaine public selon les termes de la <a href=\"%(license_url)s\">licence <em>Unlicense</em></a>."
 msgstr "The <a href=\"%(theme_url)s\">theme</a> of this website is released into the public domain according to the terms of the <a href=\"%(license_url)s\"><em>Unlicense</em> license</a>."
 
-#: templates/base.html:106
+#: templates/base.html:113
 #, python-format
 msgid "La police de caractères %(font_link)s est mise à disposition selon les dispositions de la <a href=\"%(license_url)s\">licence OFL</a>."
 msgstr "The %(font_link)s font is distributed according to the terms of the <a href=\"%(license_url)s\">OFL license</a>."
@@ -60,6 +60,11 @@ msgstr "All articles"
 #: templates/index.html:23
 msgid "Rien à voir ici... Pour l'instant!"
 msgstr "Nothing to see here... yet!"
+
+#: templates/page.html:40
+#, python-format
+msgid "Dernière mise à jour le %(modified_date)s."
+msgstr "Last updated on %(modified_date)s."
 
 #: templates/period_archives.html:5 templates/period_archives.html:8
 #, python-format
