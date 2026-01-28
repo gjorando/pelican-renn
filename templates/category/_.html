@@ -1,8 +1,14 @@
 {# Default fallback for the category.html template#}
 {% extends "index.html" %}
 
-{% block title %}{{ SITENAME|striptags }} - {% trans trimmed %}Catégorie {{ category }}{% endtrans %}{% endblock %}
+{# Default page title #}
+{% set CATEGORY_TITLE = CATEGORY_TITLE|d(_("Articles dans la catégorie %s" % CATEGORY_NAME)) %}
+
+{% block title %}{{ SITENAME|striptags }} - {% trans trimmed %}Catégorie {{ CATEGORY_NAME }}{% endtrans %}{% endblock %}
 
 {% block content_title %}
-    <h2>{% trans trimmed %}Articles dans la catégorie {{ category }}{% endtrans %}</h2>
+    <h2>{{ CATEGORY_TITLE }}</h2>
+    {% if CATEGORY_DESCRIPTION %}
+        <p>{{ CATEGORY_DESCRIPTION }}</p>
+    {% endif %}
 {% endblock %}

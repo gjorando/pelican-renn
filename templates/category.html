@@ -7,11 +7,7 @@
     {% set canonical_slug = category.slug %}
 {% endif %}
 
-{# Category specific settings #}
-{% if canonical_slug in category.settings.PER_CATEGORY_CONTEXT %}
-    {% set CATEGORY_CONTEXT = namespace(category.settings.PER_CATEGORY_CONTEXT[canonical_slug]) %}
-{% else %}
-    {% set CATEGORY_CONTEXT = namespace() %}
-{% endif %}
+{# Default value for CATEGORY_NAME #}
+{% set CATEGORY_NAME = CATEGORY_NAME|d(category.name) %}
 
 {% include ["category/{}.html".format(canonical_slug), "category/_.html"] %}

@@ -71,38 +71,6 @@ I18N_TEMPLATES_LANG = "fr"
 DEFAULT_LANG = "en"
 LOCALE = "en_CA"
 I18N_UNTRANSLATED_ARTICLES = "hide"
-I18N_SUBSITES = {
-    "fr": {
-        "LOCALE": "fr_CA",
-        "MENUITEMS": [
-            ("Galerie", "/fr/" + CATEGORY_URL.format(slug="gallery")),
-        ],
-        "LANDER_OVERRIDES": {
-            "MENUITEMS": [
-                ("Blog", "/" + INDEX_URL),
-                ("Galerie", "/" + CATEGORY_URL.format(slug="gallery")),
-            ],
-            "DISPLAY_SOCIALS_IN_FOOTER": False,
-            "NAV_ICON": None
-        },
-        "PER_CATEGORY_CONTEXT": {
-            "gallery": {
-                "page_desc": "Une description en français!",
-                "page_title": "Galerie"
-            },
-        },
-        "HIDDENCATEGORY_OVERRIDES": {
-            "gallery": {
-                "PER_CATEGORY_CONTEXT": {
-                    "gallery": {
-                        "page_desc": "La galerie cachée en français!",
-                        "page_title": "Galerie cachée"
-                    }
-                },
-            }
-        }
-    }
-}
 
 ## FEED GENERATION ##
 
@@ -194,4 +162,74 @@ LANDER_OVERRIDES = {
     ],
     "DISPLAY_SOCIALS_IN_FOOTER": False,
     "NAV_ICON": None
+}
+
+## TAILWIND CSS ##
+
+TAILWINDCSS_ENABLE = True
+TAILWINDCSS_VERSION = "v4.1.18"
+TAILWINDCSS_MINIFY = False
+TAILWINDCSS_INPUT_FILES = [f"{THEME}/static/css/style.css"]
+
+## THUMBNAILS ##
+
+THUMBNAIL_ENABLE = True
+THUMBNAIL_PATHS = [
+    "images/gallery/"
+]
+gallery_thumbnail_width = 384
+THUMBNAIL_RESIZES = {
+    # Gallery icon
+    "gallery": (gallery_thumbnail_width, round(gallery_thumbnail_width/(16/9)), True),
+    # Small size thumbnail
+    "thumbnail": (768, None, True),
+}
+
+## OVERRIDES ##
+
+# Main site (english) overrides
+OVERRIDES = {
+    ("lander-page", "Page"): {
+        "MENUITEMS": [
+            # ("Blog", "/" + INDEX_URL),
+            ("Gallery", "/" + CATEGORY_URL.format(slug="gallery")),
+        ],
+        "DISPLAY_SOCIALS_IN_FOOTER": False,
+        "NAV_ICON": None
+    },
+    ("gallery", "Category"): {
+        "CATEGORY_DESCRIPTION": "I've commissioned a lot of artists over the years. This gallery compiles all (all?) artworks of Renn.",
+    },
+    ("gallery", "HiddenCategory"): {
+        "CATEGORY_DESCRIPTION": "Oooooh, so there was more than meets the eye here.",
+    }
+}
+
+I18N_SUBSITES = {
+    # French overrides
+    "fr": {
+        "THUMBNAIL_ENABLE": False,
+        "LOCALE": "fr_CA",
+        "MENUITEMS": [
+            ("Galerie", "/fr/" + CATEGORY_URL.format(slug="gallery")),
+        ],
+        "OVERRIDES": {
+            ("lander-page", "Page"): {
+                "MENUITEMS": [
+                    ("Blog", "/fr/" + INDEX_URL),
+                    ("Galerie", "/fr/" + CATEGORY_URL.format(slug="gallery")),
+                ],
+                "DISPLAY_SOCIALS_IN_FOOTER": False,
+                "NAV_ICON": None
+            },
+            ("gallery", "Category"): {
+                "CATEGORY_DESCRIPTION": "Une description en français!",
+                "CATEGORY_NAME": "Galerie",
+            },
+            ("gallery", "HiddenCategory"): {
+                "CATEGORY_DESCRIPTION": "La galerie cachée en français!",
+                "CATEGORY_NAME": "Galerie cachée",
+            }
+        }
+    }
 }

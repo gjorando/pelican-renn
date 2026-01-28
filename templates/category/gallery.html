@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}{{ SITENAME|striptags }} - {{ CATEGORY_CONTEXT.page_title|d(category.name) }}{% endblock title %}
+{# By default, the page title is the category name #}
+{% set CATEGORY_TITLE = CATEGORY_TITLE|d(CATEGORY_NAME) %}
+
+{% block title %}{{ SITENAME|striptags }} - {{ CATEGORY_TITLE }}{% endblock title %}
 
 {% block header %}
-    <h1>{{ CATEGORY_CONTEXT.page_title|d(category.name) }}</h1>
-    <p>{{ CATEGORY_CONTEXT.page_desc }}</p>
+    <h1>{{ CATEGORY_TITLE }}</h1>
+    {% if CATEGORY_DESCRIPTION %}
+        <p>{{ CATEGORY_DESCRIPTION }}</p>
+    {% endif %}
 {% endblock header %}
 
 {% block content %}

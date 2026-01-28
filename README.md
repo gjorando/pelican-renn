@@ -39,23 +39,31 @@ To generate the lander page, you must add a page with the following content:
 
 The `nav` metadata is optional, and can be populated with a list of `text <uri>` or `uri` links that will be added to the navbar. `save_as` can be set as you want, but if you mean the lander page to be your root index page, you must at least redefine `INDEX_SAVE_AS`. This is already configured in the example configuration file.
 
-#### `LANDER_OVERRIDES`
-
-Defines overrides for any setting, that will be used in the lander page instead of the default values.
-
 ### Per-category templates for article and category pages
 
 The [category](templates/category.html) and [article](templates/article.html) templates allow for category specific templates. They are to be defined in `templates/category/{category_slug}.html` and `templates/article/{category_slug}.html` respectively, the default fallback being named `_.html`. Hidden categories from [`pelican-renn-plugin`](https://github.com/gjorando/pelican-renn-plugin) are supported: A hidden category gets the same custom template as its base category.
 
-#### `PER_CATEGORY_CONTEXT`
-
-Each custom category template may need certain attributes. They can be defined in `PER_CATEGORY_CONTEXT`, a dictionary mapping custom attributes to a category slug.
-
 ### An example of customized category: Gallery
 
-The theme comes with an instance of custom category, an image gallery. Each article in this category is an image with a description, and the category page displays them as a grid. The image is set via the `img` metadata, and the `source` metadata can optionally be set as an url to a source reference for the image.
+The theme comes with a pre-made custom category, an image gallery. Each article in this category is an image with a description, and the category page displays them as a grid. The image is set via the `img` metadata, and the `source` metadata can optionally be set as a url to a source reference for the image.
 
-### Additional configuration keys
+### Compatibility with `pelican-renn-plugin` overrides feature
+
+These configuration variables do not make much sense without the overrides feature of [`pelican-renn-plugin`](https://github.com/gjorando/pelican-renn-plugin). This allows you to define per-category values, and they are reflected in the rendered templates. Putting them in the global settings namespace will overrides the value for all categories that do not redefine it in `OVERRIDES`. See [the example Pelican configuration file](pelicanconf_template.py) for more details.
+
+#### `CATEGORY_NAME`
+
+Replace the name of the category with this value.
+
+#### `CATEGORY_TITLE`
+
+Replace the default content title of the category page with this value.
+
+#### `CATEGORY_DESCRIPTION`
+
+Add a category description below the content title page.
+
+### Additional configuration variables
 
 #### `INDEX_URL`, `ARCHIVES_URL`, `AUTHORS_URL`, `CATEGORIES_URL`, `TAGS_URL`
 
