@@ -100,11 +100,11 @@
 
         <footer class="self-stretch bg-footer p-8 mt-6 flex flex-col items-center text-base gap-2">
         {% block footer %}
-            <p>{% trans trimmed %}
-                Le <a href="https://github.com/gjorando/pelican-renn/">thème</a> de ce site est transféré dans le domaine public selon les termes de la <a href="https://unlicense.org">licence <em>Unlicense</em></a>.
+            <p>{% trans trimmed theme_url="https://github.com/gjorando/pelican-renn/", license_url="https://unlicense.org" %}
+                Le <a href="{{ theme_url }}">thème</a> de ce site est transféré dans le domaine public selon les termes de la <a href="{{ license_url }}">licence <em>Unlicense</em></a>.
             {% endtrans %}</p>
-            <p>{% trans trimmed %}
-                La police de caractères <a href="http://mplus-fonts.osdn.jp/">M<span style="vertical-align: super; font-size: 0.8em; line-height: 0;">+</span> P Type-1</a> est mise à disposition selon les dispositions de la <a href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/fonts/MPLUS1p/OFL.txt">licence OFL</a>.
+            <p>{% trans trimmed font_link="<a href=\"http://mplus-fonts.osdn.jp/\">M<span style=\"vertical-align: super; font-size: 0.8em; line-height: 0;\">+</span> P Type-1</a>", license_url="%s/%s/fonts/MPLUS1p/OFL.txt" % (SITEURL, THEME_STATIC_DIR) %}
+                La police de caractères {{ font_link }} est mise à disposition selon les dispositions de la <a href="{{ license_url }}">licence OFL</a>.
             {% endtrans %}</p>
             {% if DISPLAY_SOCIALS_IN_FOOTER %}
                 {% include "snippets/social_footer.html" %}

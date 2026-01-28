@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 
-{% block title %}{{ SITENAME|striptags }} - {{ _("Articles par") }} {{ author }}{% endblock %}
+{% block title %}{{ SITENAME|striptags }} - {{ author.name }}{% endblock %}
 
 {% block content_title %}
-    <h2>{{ _("Articles par") }} {{ author }}</h2>
+    <h2>{{ _("Articles par %(author_name)s", author_name=author.name) }}</h2>
 {% endblock %}

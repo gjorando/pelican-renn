@@ -2,9 +2,9 @@
 {% extends "index.html" %}
 
 {# Default page title #}
-{% set CATEGORY_TITLE = CATEGORY_TITLE|d(_("Articles dans la catégorie %s" % CATEGORY_NAME)) %}
+{% set CATEGORY_TITLE = CATEGORY_TITLE|d(_("Articles dans la catégorie %(category_name)s", category_name=CATEGORY_NAME)) %}
 
-{% block title %}{{ SITENAME|striptags }} - {% trans trimmed %}Catégorie {{ CATEGORY_NAME }}{% endtrans %}{% endblock %}
+{% block title %}{{ SITENAME|striptags }} - {{ _("Catégorie %(category_name)s", category_name=CATEGORY_NAME) }}{% endblock %}
 
 {% block content_title %}
     <h2>{{ CATEGORY_TITLE }}</h2>

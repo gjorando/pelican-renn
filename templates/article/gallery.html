@@ -15,7 +15,9 @@
             <hgroup>
                 <h1>{{ article.title }}</h1>
                 <p>
-                    {{ _("Artiste:") }} <a href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author.name }}</a>
+                    {% trans trimmed artist_link="<a href=\"%(site_url)s/%(author_url)s\">%(author_name)s</a>" % {"site_url": SITE_URL, "author_url": article.author.url, "author_name": article.author.name} %}
+                        Artiste: {{ artist_link }}
+                    {% endtrans %}
                     {% if article.metadata.source %}
                         (<a href="{{ article.metadata.source }}">{{ _("source") }}</a>)
                     {% endif %}

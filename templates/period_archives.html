@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{% set period_string = period|reverse|join(" ") %}
+{% set period_name = period|reverse|join(" ") %}
 
-{% block title %}{{ SITENAME|striptags }} - {% trans trimmed %}Archives de {{ period_string }}{% endtrans %}{% endblock %}
+{% block title %}{{ SITENAME|striptags }} - {% trans trimmed %}Archives de {{ period_name }}{% endtrans %}{% endblock %}
 
 {% block content %}
-    <h2>{% trans trimmed %}Archives de {{ period_string }}{% endtrans %}</h2>
+    <h2>{% trans trimmed %}Archives de {{ period_name }}{% endtrans %}</h2>
 
     <dl class="flex flex-col lg:items-center">
         {% for article in dates %}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pelican-renn 1.0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-01-23 09:27+0100\n"
+"POT-Creation-Date: 2026-01-28 17:00+0100\n"
 "PO-Revision-Date: 2026-01-10 13:28+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -19,39 +19,39 @@ msgstr ""
 "Generated-By: Babel 2.17.0\n"
 
 #: templates/archives.html:3 templates/archives.html:6
-#, fuzzy
 msgid "Archives"
 msgstr "Archives"
 
-#: templates/author.html:3 templates/author.html:6
-#, fuzzy
-msgid "Articles par"
-msgstr "Articles by"
+#: templates/author.html:6
+#, python-format
+msgid "Articles par %(author_name)s"
+msgstr "Articles by %(author_name)s"
 
 #: templates/authors.html:3
 msgid "Auteurs"
-msgstr "Authors"
+msgstr "All authors"
 
 #: templates/authors.html:6
 msgid "Articles par auteur"
-msgstr "Articles per author"
+msgstr "Articles by author"
 
-#: templates/base.html:72
-msgid "Le <a href=\"https://github.com/gjorando/pelican-renn/\">thème</a> de ce site est transféré dans le domaine public selon les termes de la <a href=\"https://unlicense.org\">licence <em>Unlicense</em></a>."
-msgstr "The <a href=\"https://github.com/gjorando/pelican-renn/\">theme</a> of this website is transferred in the public domain according to the terms of the <a href=\"https://unlicense.org\"><em>Unlicense</em> license</a>."
+#: templates/base.html:103
+#, python-format
+msgid "Le <a href=\"%(theme_url)s\">thème</a> de ce site est transféré dans le domaine public selon les termes de la <a href=\"%(license_url)s\">licence <em>Unlicense</em></a>."
+msgstr "The <a href=\"%(theme_url)s\">theme</a> of this website is released into the public domain according to the terms of the <a href=\"%(license_url)s\"><em>Unlicense</em> license</a>."
 
-#: templates/base.html:75
-#, fuzzy, python-format
-msgid "La police de caractères <a href=\"http://mplus-fonts.osdn.jp/\">M<span style=\"vertical-align: super; font-size: 0.8em; line-height: 0;\">+</span> P Type-1</a> est mise à disposition selon les dispositions de la <a href=\"%(SITEURL)s/%(THEME_STATIC_DIR)s/fonts/MPLUS1p/OFL.txt\">licence OFL</a>."
-msgstr "The <a href=\"http://mplus-fonts.osdn.jp/\">M<span style=\"vertical-align: super; font-size: 0.8em; line-height: 0;\">+</span> P Type-1</a> font is distributed according to the terms of the <a href=\"%(SITEURL)s/theme/fonts/MPLUS1p/OFL.txt\">OFL license</a>."
+#: templates/base.html:106
+#, python-format
+msgid "La police de caractères %(font_link)s est mise à disposition selon les dispositions de la <a href=\"%(license_url)s\">licence OFL</a>."
+msgstr "The %(font_link)s font is distributed according to the terms of the <a href=\"%(license_url)s\">OFL license</a>."
 
 #: templates/categories.html:3
 msgid "Catégories"
-msgstr "Categories"
+msgstr "All categories"
 
 #: templates/categories.html:6
 msgid "Articles par catégorie"
-msgstr "Articles per category"
+msgstr "Articles by category"
 
 #: templates/index.html:5
 msgid "Articles"
@@ -59,52 +59,55 @@ msgstr "All articles"
 
 #: templates/index.html:23
 msgid "Rien à voir ici... Pour l'instant!"
-msgstr "Nothing to see here... Yet!"
+msgstr "Nothing to see here... yet!"
 
 #: templates/period_archives.html:5 templates/period_archives.html:8
 #, python-format
-msgid "Archives de %(period_string)s"
-msgstr "%(period_string)s archives"
+msgid "Archives de %(period_name)s"
+msgstr "Archives for %(period_name)s"
 
 #: templates/tag.html:3
 #, python-format
-msgid "Tag %(tag)s"
-msgstr "%(tag)s tag"
+msgid "Tag %(tag_name)s"
+msgstr "%(tag_name)s tag"
 
 #: templates/tag.html:6
 #, python-format
-msgid "Articles avec le tag %(tag)s"
-msgstr "Articles tagged with %(tag)s"
+msgid "Articles avec le tag %(tag_name)s"
+msgstr "Articles tagged with %(tag_name)s"
 
 #: templates/tags.html:3
 msgid "Tags"
-msgstr "Tags"
+msgstr "All Tags"
 
 #: templates/tags.html:6
-#, fuzzy
 msgid "Articles par tag"
-msgstr "Articles per tag"
+msgstr "Articles by tag"
 
 #: templates/article/gallery.html:3
 msgid "Retour"
 msgstr "Go back"
 
-#: templates/article/gallery.html:20
-#, fuzzy
-msgid "Artiste:"
-msgstr "Artist:"
+#: templates/article/gallery.html:11
+msgid "Cliquez pour l'image en pleine taille"
+msgstr "Click for the full size image"
+
+#: templates/article/gallery.html:18
+#, python-format
+msgid "Artiste: %(artist_link)s"
+msgstr "Artist: %(artist_link)s"
 
 #: templates/article/gallery.html:22
 msgid "source"
 msgstr "source"
 
-#: templates/category/_.html:4
+#: templates/category/_.html:5
 #, python-format
-msgid "Catégorie %(category)s"
-msgstr "%(category)s category"
+msgid "Articles dans la catégorie %(category_name)s"
+msgstr "Articles in the %(category_name)s category"
 
 #: templates/category/_.html:7
 #, python-format
-msgid "Articles dans la catégorie %(category)s"
-msgstr "Articles in the %(category)s category"
+msgid "Catégorie %(category_name)s"
+msgstr "%(category_name)s category"
 
