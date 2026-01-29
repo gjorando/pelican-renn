@@ -12,7 +12,8 @@ JINJA_ENVIRONMENT = {
 
 # Plugins
 PLUGIN_PATHS = ["plugin/pelican/plugins/"]
-PLUGINS = ["pelican_renn_plugin", "i18n_subsites"]
+# We use a patched version of i18n-subsites
+PLUGINS = ["pelican_renn_plugin", "patched_i18n_subsites"]
 
 # Extract some more metadata about the source file path, ie. the full path, directory, file name, and file name without the extension
 PATH_METADATA = r"(?P<full_path>(?P<directory_path>.*)\/(?P<filename_full>(?P<filename_no_ext>.*)\..*))"
