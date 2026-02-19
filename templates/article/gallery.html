@@ -7,8 +7,8 @@
 
 {% block content %}
     <article>
-        <header>
-            <a title="{{ _("Cliquez pour l'image en pleine taille") }}" href="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}">
+        <header class="flex flex-col items-left lg:items-center">
+            <a class="w-4/5 lg:w-full self-center" title="{{ _("Cliquez pour l'image en pleine taille") }}" href="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img }}">
                 {% include "snippets/nsfw_stamp.html" %}
                 <img class="w-full" src="{{ SITEURL }}/{{ relpath_to_site(DEFAULT_LANG, main_lang) }}/{{ article.metadata.img|get_thumbnail("thumbnail") }}" />
             </a>
